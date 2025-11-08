@@ -55,8 +55,8 @@ No special tooling beyond SAS is required.
 - `data/synthetic/` — **fabricated** demo dataset (no PHI/PII).
 - `data/dictionary.csv` — variable names, labels, types, and valid values.
 - `reports/` — final PDFs:
-  - `VDH_CHR_Survey_Totals_Final.pdf`
-  - `VDH_CHR_Survey_Subgroups_Final.pdf`
+  - `vdh_chr_survey_totals.pdf`
+  - `vdh_chr_survey_subgroups.pdf`
 - `instrument/` — blank client survey (for context).
 - `docs/` — optional case study or notes for GitHub Pages.
 - `LICENSE` — MIT license for code.
