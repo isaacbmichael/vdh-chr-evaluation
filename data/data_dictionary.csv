@@ -1,0 +1,33 @@
+variable,label
+record_id,Record ID (synthetic)
+residence,City/County (broad)
+dob_y,Birth year
+gen_id,Gender: self-identify
+race_white,"White, non-Hispanic"
+race_black,"Black/African American, non-Hispanic"
+ethn_hisp,Hispanic/Latino (all races)
+race_bi_multi,Biracial/Multi-racial
+race_other,Other race (flag)
+employed_now,Employment now
+employed_past_year,Employed in past year
+site_location,Sub-grantee site / region
+q1_helpful,Q1 Helpful
+q2_helpful_food,Q2 Helpful Food
+q3_helpful_housing,Q3 Helpful Housing
+q4_helpful_mh,Q4 Helpful Mh
+q5_satisfaction_needle,Q5 Satisfaction Needle
+q7_syphilis_info,Q7 Syphilis Info
+q8_hep_c_info,Q8 Hep C Info
+q9_suicide_info,Q9 Suicide Info
+q10_hiv_info,Q10 Hiv Info
+q13_fentanyl_concern,Q13 Fentanyl Concern
+q14_fentanyl_satisfaction,Q14 Fentanyl Satisfaction
+q15_xylazine_concern,Q15 Xylazine Concern
+q16_xylazine_satisfaction,Q16 Xylazine Satisfaction
+q17_harm_satisfaction,Q17 Harm Satisfaction
+q18_van_satisfaction,Q18 Van Satisfaction
+q20_overall_satisfaction,Q20 Overall Satisfaction
+q6_prep_pep,Q6 Prep Pep
+q11_hiv_tests_taken,Q11 Hiv Tests Taken
+q12_narcan_use,Q12 Narcan Use
+q19_treatment_consideration,Q19 Treatment Consideration
