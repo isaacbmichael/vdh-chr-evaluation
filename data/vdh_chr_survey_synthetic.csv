@@ -1,0 +1,201 @@
+﻿record_id,age,residence,program_length,site_location,dob_y,gender,race_white,race_black,ethn_hisp,race_bi_multi,race_other,race_other_spec,race_bi_multi_spec,employed_now,employed_past_year,hear_harm_friend,hear_harm_family,hear_harm_internet,hear_harm_csb,hear_harm_faith_org,hear_harm_other,hear_harm_van,hear_health_other,q1_helpful,q2_helpful_food,q3_helpful_housing,q4_helpful_mh,q5_satisfaction_needle,q6_prep_pep,q7_syphilis_info,q8_hep_c_info,q9_suicide_info,q10_hiv_info,q11_hiv_tests_taken,q12_narcan_use,q13_fentanyl_concern,q14_fentanyl_satisfaction,q15_xylazine_concern,q16_xylazine_satisfaction,q17_harm_satisfaction,q18_van_satisfaction,q19_treatment_consideration,q20_overall_satisfaction,q21_additional_info,next_survey,staff_comments,complete
+1,43,Roanoke,1197,Virginia Harm Reduction Coalition/Roanoke,1981,Male,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,No,Yes,,4,3,5,5,1,3,5,5,2,5,3,1,5,5,3,5,5,3,4,5,,Yes,,Complete
+2,39,Virginia Beach @ HB,1912,Health Brigade - Richmond,1985,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,4,2,5,5,3,1,5,3,1,5,1,3,5,1,2,4,5,5,3,5,,Yes,,Complete
+3,43,Chesterfield,734,Lenowisco Health District / Wise Co. ,1981,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,4,5,1,2,1,5,1,3,5,2,2,5,5,2,4,3,5,2,5,,Yes,,Complete
+4,46,"Coeburn, Va",336,Virginia Harm Reduction Coalition/Roanoke,1978,Male,No,No,No,Yes,No,,,Part-time,Full-time,Yes,No,No,No,Yes,No,No,,4,3,3,5,2,3,5,3,1,5,2,2,5,3,1,5,2,5,5,5,,Yes,,Complete
+5,51,Richmond,504,Health Brigade - Richmond,1973,Female,Yes,No,No,No,No,,,Part-time,Part-time,Yes,No,No,No,Yes,No,No,,4,2,2,1,5,3,5,2,2,5,3,2,1,1,1,5,5,5,1,5,,Yes,,Complete
+6,29,Roanoke,147,Virginia Harm Reduction Coalition/Roanoke,1995,Male,No,Yes,No,No,No,,,Not employed,Full-time,No,Yes,Yes,No,No,No,No,,5,2,4,5,4,1,4,5,4,1,3,3,5,1,1,5,5,2,2,5,,Yes,,Complete
+7,38,Chesterfield,321,Virginia Harm Reduction Coalition/Roanoke,1986,Female,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,5,5,5,4,3,5,3,2,5,2,3,5,3,3,3,5,3,4,5,,Yes,,Complete
+8,61,Richmond,883,Health Brigade - Richmond,1963,Female,Yes,No,No,No,No,,,Not employed,Full-time,No,No,No,No,No,No,No,,3,1,5,2,4,3,3,3,3,5,1,2,5,1,3,5,3,4,3,5,,Yes,,Complete
+9,49,Roanoke,314,Lenowisco Health District / Wise Co. ,1975,Female,No,No,Yes,No,No,,,Full-time,Not employed,Yes,No,No,No,Yes,Yes,No,,1,4,5,5,4,2,1,5,5,1,3,2,5,3,3,5,2,5,4,5,,Yes,,Complete
+10,38,Richmond,261,Virginia Harm Reduction Coalition/Roanoke,1986,Male,No,No,No,Yes,No,,,Full-time,Part-time,Yes,No,No,No,Yes,No,No,,5,1,1,5,3,SK,5,2,1,5,2,3,1,3,5,5,3,3,2,5,,Yes,,Complete
+11,56,Richmond,157,Council of Community Services - Roanoke ,1968,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,3,5,4,5,1,4,1,3,5,2,3,5,4,3,5,4,5,4,5,,Yes,,Complete
+12,54,Richmond,158,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1970,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,Yes,Yes,No,No,No,,5,3,5,5,4,2,5,4,3,1,3,SK,3,1,4,5,2,4,2,5,,Yes,,Complete
+13,58,Richmond,1700,Health Brigade - Richmond,1966,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,Yes,No,No,,5,3,4,5,5,3,5,4,1,5,2,2,5,5,1,5,5,4,4,4,,Yes,,Complete
+14,39,Roanoke,207,Health Brigade - Richmond,1985,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,Yes,No,,2,1,1,5,3,1,5,2,3,1,2,3,5,5,5,5,1,3,2,4,,Yes,,Complete
+15,49,Richmond,1145,Health Brigade - Richmond,1975,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,Yes,No,,1,2,5,SK,2,2,5,1,5,1,2,3,5,5,1,5,5,3,1,5,,Yes,,Complete
+16,64,"Herndon, VA (Fairfax)",343,Virginia Harm Reduction Coalition/Roanoke,1960,Female,Yes,No,No,No,No,,,Full-time,Not employed,Yes,No,No,No,No,Yes,Yes,,5,3,1,5,1,2,3,5,2,5,1,1,1,3,5,5,1,3,4,5,,Yes,,Complete
+17,60,Richmond,418,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1964,Male,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,Yes,No,No,,2,4,5,5,2,3,5,2,5,1,2,3,5,2,5,5,5,4,4,5,,Yes,,Complete
+18,46,Newport News,91,Health Brigade - Richmond,1978,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,2,5,3,4,1,5,2,3,5,2,2,5,3,2,5,1,3,3,5,,Yes,,Complete
+19,44,Roanoke,1391,Health Brigade - Richmond,1980,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,Yes,Yes,No,No,No,No,,1,3,5,5,4,1,5,1,4,5,2,3,2,5,4,5,2,1,4,5,,Yes,,Complete
+20,50,Richmond ,433,Health Brigade - Richmond,1974,Female,No,No,No,No,Yes,,,Part-time,Not employed,Yes,No,No,No,No,No,No,,2,5,5,4,1,SK,1,5,4,5,1,3,5,3,5,4,2,5,4,3,,Yes,,Complete
+21,43,Richmod,413,Virginia Harm Reduction Coalition/Roanoke,1981,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,Yes,,4,4,5,3,5,1,5,4,4,5,1,2,1,3,4,SK,5,5,1,5,,Yes,,Complete
+22,44,Chesterfield,1309,Health Brigade - Richmond,1980,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,4,1,3,3,1,2,5,4,4,5,2,2,3,2,1,4,3,4,4,5,,Yes,,Complete
+23,27,Richmond,1580,Health Brigade - Richmond,1997,Male,No,Yes,No,No,No,,,Full-time,Part-time,Yes,No,No,No,No,No,No,,3,1,1,5,2,2,1,5,3,5,2,3,5,5,4,5,2,2,5,4,,Yes,,Complete
+24,54,Rockingham,1492,Health Brigade - Richmond,1970,Male,No,Yes,No,No,No,,,Not employed,Not employed,No,No,No,No,Yes,No,No,,4,2,5,4,5,2,5,2,1,5,1,2,5,4,5,5,4,1,5,3,,Yes,,Complete
+25,31,Richmond,99,Health Brigade - Richmond,1993,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,5,2,2,1,2,1,5,5,4,5,2,1,5,3,3,5,5,1,2,3,,Yes,,Complete
+26,34,Roanoke,1750,Health Brigade - Richmond,1990,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,3,4,5,5,3,3,5,1,1,5,1,2,1,1,2,5,4,5,3,5,,Yes,,Complete
+27,43,Roanoke County,1758,Virginia Harm Reduction Coalition/Roanoke,1981,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,4,5,4,3,1,1,1,1,2,5,2,3,5,4,4,1,5,2,3,5,,Yes,,Complete
+28,18,Roanoke CIty,625,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",2006,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,5,1,4,2,3,3,3,4,5,2,1,5,5,2,5,5,2,5,5,,Yes,,Complete
+29,43,Richmond,1527,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1981,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,No,No,No,,2,3,1,5,5,2,4,4,3,1,1,1,3,1,4,5,3,1,5,5,,Yes,,Complete
+30,42,Hampton,1504,Lenowisco Health District / Wise Co. ,1982,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,2,4,5,5,2,2,5,4,5,5,1,2,1,2,2,5,3,5,1,5,,Yes,,Complete
+31,29,Botetourt County,1677,Health Brigade - Richmond,1995,Female,No,No,No,Yes,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,1,3,5,5,1,1,5,3,4,SK,2,2,3,4,1,5,2,3,1,5,,Yes,,Complete
+32,47,RIchmond,709,Health Brigade - Richmond,1977,Female,No,No,No,Yes,No,,,Part-time,Not employed,Yes,No,No,No,Yes,No,Yes,,5,5,3,3,3,2,5,1,1,5,2,1,4,1,3,5,3,2,4,5,,Yes,,Complete
+33,40,Richmond,1968,Health Brigade - Richmond,1984,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,2,2,5,4,1,5,3,4,5,2,2,3,3,1,5,5,2,3,5,,Yes,,Complete
+34,40,Marion,973,Council of Community Services - Roanoke ,1984,Male,Yes,No,No,No,No,,,Full-time,Full-time,Yes,No,No,No,No,No,No,,4,2,5,5,2,1,5,3,3,5,1,1,5,3,5,1,1,2,2,5,,Yes,,Complete
+35,59,Rockingham,1902,Council of Community Services - Roanoke ,1965,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,5,4,5,2,4,SK,1,1,3,5,1,3,2,5,5,5,1,3,2,5,,Yes,,Complete
+36,41,Newport News,918,Health Brigade - Richmond,1983,Female,No,No,No,Yes,No,,,Not employed,Full-time,No,No,No,No,No,No,No,,2,1,5,3,4,2,3,4,5,5,SK,3,1,5,3,5,1,3,5,5,,Yes,,Complete
+37,33,Richmond,1740,Health Brigade - Richmond,1991,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,4,2,5,1,3,1,1,3,2,5,1,3,3,1,2,5,3,5,1,5,,Yes,,Complete
+38,38,Chesterfield,782,Council of Community Services - Roanoke ,1986,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,2,5,5,5,1,3,1,4,1,1,1,2,1,3,4,1,1,3,3,SK,,Yes,,Complete
+39,39,Roanoke,1291,Health Brigade - Richmond,1985,Male,No,No,No,Yes,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,5,4,5,1,5,3,4,2,5,5,2,2,1,1,5,5,4,4,1,5,,Yes,,Complete
+40,45,Richmond,427,Virginia Harm Reduction Coalition/Roanoke,1979,Female,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,No,No,,1,2,1,3,5,1,5,1,1,5,2,2,1,3,2,4,1,5,2,5,,Yes,,Complete
+41,22,Richmond,1216,Lenowisco Health District / Wise Co. ,2002,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,5,1,5,5,4,SK,1,1,3,1,1,SK,5,5,4,5,4,2,1,5,,Yes,,Complete
+42,56,Chesterfield,86,Health Brigade - Richmond,1968,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,4,2,4,4,2,2,5,1,1,5,3,2,1,3,2,5,2,3,2,4,,Yes,,Complete
+43,33,Chesterfield,1194,Virginia Harm Reduction Coalition/Roanoke,1991,Male,No,No,No,Yes,No,,,Not employed,Full-time,No,No,No,No,Yes,No,No,,2,1,3,4,1,2,5,4,2,5,1,3,5,2,1,5,3,5,2,5,,Yes,,Complete
+44,47,Richmond,7,Health Brigade - Richmond,1977,Male,Yes,No,No,No,No,,,Full-time,Part-time,Yes,No,No,No,No,No,No,,5,1,1,1,1,3,5,2,1,5,2,2,5,5,1,5,1,5,5,5,,Yes,,Complete
+45,28,Richmond,891,Health Brigade - Richmond,1996,Male,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,No,No,,2,1,5,5,2,3,5,2,4,3,2,2,5,1,2,5,2,2,5,5,,Yes,,Complete
+46,42,Hampton,688,Council of Community Services - Roanoke ,1982,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,2,1,2,2,2,3,5,4,1,1,2,2,2,3,2,5,1,5,3,5,,Yes,,Complete
+47,37,"Herndon, VA (Fairfax)",1150,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1987,Female,No,No,Yes,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,4,3,3,1,5,2,2,5,5,5,1,3,5,5,5,2,3,1,3,5,,Yes,,Complete
+48,44,Norfolk,983,Health Brigade - Richmond,1980,Female,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,No,No,,5,1,5,4,1,3,5,2,1,5,2,1,4,5,3,5,5,1,1,5,,Yes,,Complete
+49,33,Norfolk,644,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1991,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,No,No,No,,1,3,4,5,3,2,3,5,5,5,2,1,1,4,3,1,2,3,3,5,,Yes,,Complete
+50,37,Wise,470,"Strength In Peers - Harrisonburg, Rockingham Co., Page Co., Shenandoah Co. ",1987,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,5,1,1,3,5,3,1,2,4,1,1,3,1,4,2,5,2,4,3,5,,Yes,,Complete
+51,50,Richmond,1919,Virginia Harm Reduction Coalition/Roanoke,1974,Female,No,No,No,No,Yes,,,Not employed,Part-time,Yes,No,No,No,No,Yes,Yes,,4,3,4,4,1,3,5,3,5,5,1,2,5,2,1,4,1,3,3,5,,Yes,,Complete
+52,41,Roanoke,23,Health Brigade - Richmond,1983,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,2,4,5,5,1,3,1,4,4,5,2,1,5,2,1,5,5,1,2,5,,Yes,,Complete
+53,32,Harrisonburg,51,Virginia Harm Reduction Coalition/Roanoke,1992,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,Yes,No,,1,2,5,5,5,1,5,3,4,5,2,SK,1,3,3,5,3,2,2,3,,Yes,,Complete
+54,25,Roanoke,1314,Virginia Harm Reduction Coalition/Roanoke,1999,Male,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,Yes,No,Yes,,5,3,5,3,5,3,5,5,4,5,3,3,5,2,2,4,1,1,3,5,,Yes,,Complete
+55,44,Chesterfield,1154,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1980,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,Yes,No,,4,4,1,5,2,1,5,5,4,5,2,SK,5,5,4,5,3,5,5,5,,Yes,,Complete
+56,48,Henrico,1058,Health Brigade - Richmond,1976,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,No,No,No,,1,3,3,1,2,SK,4,5,1,5,1,3,5,3,4,5,3,5,3,5,,Yes,,Complete
+57,53,Roanoke,95,Health Brigade - Richmond,1971,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,5,2,5,5,3,2,1,5,4,5,1,3,5,2,5,5,3,1,1,4,,Yes,,Complete
+58,41,Richmond,1934,Health Brigade - Richmond,1983,Male,Yes,No,No,No,No,,,Part-time,Full-time,No,No,No,No,No,No,No,,2,4,2,4,3,3,5,4,2,4,1,2,5,4,1,5,2,2,5,5,,Yes,,Complete
+59,28,Roanoke CIty,16,Health Brigade - Richmond,1996,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,1,4,4,5,5,3,1,4,2,5,1,3,1,1,3,1,3,3,2,5,,Yes,,Complete
+60,44,Roanoke,1071,Council of Community Services - Roanoke ,1980,Female,No,No,No,No,Yes,,,Part-time,Part-time,Yes,No,No,No,No,No,No,,2,5,3,5,5,3,5,4,5,5,3,2,5,1,4,5,5,3,3,5,,Yes,,Complete
+61,45,Richmond,606,Health Brigade - Richmond,1979,Male,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,No,Yes,,4,5,5,4,1,1,2,4,3,1,2,3,5,1,1,2,3,3,2,5,,Yes,,Complete
+62,30,Roanoke,1626,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1994,Male,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,Yes,No,No,,4,4,5,3,2,3,3,3,5,5,3,2,2,5,3,5,1,2,4,5,,Yes,,Complete
+63,43,Richmond,1243,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1981,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,3,4,4,4,3,5,2,4,5,1,2,5,1,1,3,3,5,1,5,,Yes,,Complete
+64,47,Richmond,150,Council of Community Services - Roanoke ,1977,Male,Yes,No,No,No,No,,,Full-time,Not employed,Yes,No,No,No,No,No,No,,5,5,5,5,5,1,5,3,5,5,1,1,1,5,3,3,2,3,1,5,,Yes,,Complete
+65,46,Roanoke County,1417,Health Brigade - Richmond,1978,Male,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,Yes,No,No,,3,3,1,5,2,3,5,2,1,5,1,2,4,2,2,5,2,5,2,4,,Yes,,Complete
+66,45,Roanoke and Salem,828,Lenowisco Health District / Wise Co. ,1979,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,4,4,2,5,2,1,1,2,2,5,3,3,5,1,4,5,4,5,5,5,,Yes,,Complete
+67,54,Roanoke,1355,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1970,Female,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,Yes,No,,1,1,5,5,2,3,5,2,4,5,2,1,4,5,4,5,2,5,5,5,,Yes,,Complete
+68,52,Hanover,53,Health Brigade - Richmond,1972,Male,Yes,No,No,No,No,,,Full-time,Not employed,Yes,No,No,No,No,No,No,,3,3,4,3,2,2,4,5,3,5,3,2,5,3,3,5,2,4,2,5,,Yes,,Complete
+69,36,Chesterfield,616,Health Brigade - Richmond,1988,Female,Yes,No,No,No,No,,,Part-time,Part-time,Yes,No,No,No,No,No,No,,4,3,5,5,3,3,3,2,1,5,1,3,5,5,5,5,5,3,1,5,,Yes,,Complete
+70,28,Chesterfield,24,Lenowisco Health District / Wise Co. ,1996,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,1,2,5,1,1,1,5,5,5,2,1,5,4,2,5,4,3,1,5,,Yes,,Complete
+71,31,Roanoke,1584,Council of Community Services - Roanoke ,1993,Female,No,Yes,No,No,No,,,Full-time,Full-time,Yes,No,No,No,No,Yes,No,,3,2,5,5,1,1,2,3,2,5,3,3,5,2,5,1,4,2,4,5,,Yes,,Complete
+72,55,Richmond,857,Health Brigade - Richmond,1969,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,No,No,No,,3,5,1,5,1,2,5,3,2,5,1,3,3,3,1,5,1,3,3,5,,Yes,,Complete
+73,36,Roanoke,1294,Lenowisco Health District / Wise Co. ,1988,Male,Yes,No,No,No,No,,,Full-time,Part-time,Yes,No,No,No,No,No,No,,4,1,5,5,5,3,5,1,4,5,2,3,2,1,3,5,2,4,2,5,,Yes,,Complete
+74,49,Richmond,437,Health Brigade - Richmond,1975,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,3,2,1,5,2,3,4,1,5,5,3,2,5,5,1,5,2,4,3,4,,Yes,,Complete
+75,46,Powhatan,793,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1978,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,Yes,Yes,No,Yes,No,No,,4,3,3,5,4,1,5,3,2,5,1,SK,4,4,5,1,1,1,2,5,,Yes,,Complete
+76,34,Richmod,401,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1990,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,3,2,1,1,2,3,5,3,5,5,2,2,5,1,3,5,2,2,3,5,,Yes,,Complete
+77,37,Centreville,279,Health Brigade - Richmond,1987,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,4,3,3,1,3,5,5,5,1,2,3,5,5,3,5,4,3,1,5,,Yes,,Complete
+78,33,Arlington,1519,Virginia Harm Reduction Coalition/Roanoke,1991,Female,No,Yes,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,Yes,No,,3,1,5,5,3,3,1,4,5,5,1,2,1,2,2,5,5,4,5,5,,Yes,,Complete
+79,59,Augusta,1160,Council of Community Services - Roanoke ,1965,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,5,5,5,5,3,1,4,1,5,1,2,4,3,4,5,3,5,2,5,,Yes,,Complete
+80,34,Richmond,1558,Virginia Harm Reduction Coalition/Roanoke,1990,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,No,No,No,,5,5,1,5,2,3,5,4,4,5,1,2,5,1,1,5,4,3,4,5,,Yes,,Complete
+81,40,Richmond,1056,Health Brigade - Richmond,1984,Male,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,No,No,No,,3,4,5,3,3,1,4,3,5,5,2,2,1,1,1,5,2,1,1,5,,Yes,,Complete
+82,43,Richmond,96,Health Brigade - Richmond,1981,Female,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,Yes,No,,1,5,1,5,4,2,1,5,3,5,3,2,4,5,1,4,3,5,1,5,,Yes,,Complete
+83,33,Virginia Beach,1577,Virginia Harm Reduction Coalition/Roanoke,1991,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,Yes,No,No,,2,1,4,5,4,SK,5,3,1,5,2,2,3,3,4,1,4,4,2,5,,Yes,,Complete
+84,46,Roanoke,1891,Health Brigade - Richmond,1978,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,Yes,,5,4,3,3,2,1,5,2,4,5,1,1,5,4,1,5,1,4,1,5,,Yes,,Complete
+85,43,Wise ,286,Lenowisco Health District / Wise Co. ,1981,Female,No,Yes,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,No,Yes,,2,4,1,2,3,2,5,1,5,3,3,1,1,3,2,5,3,2,2,5,,Yes,,Complete
+86,48,Richmond,53,Health Brigade - Richmond,1976,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,5,1,SK,5,2,1,3,1,5,2,1,5,2,1,5,1,2,2,5,,Yes,,Complete
+87,47,Ashland,229,Council of Community Services - Roanoke ,1977,Female,Yes,No,No,No,No,,,Part-time,Not employed,No,No,No,No,No,No,Yes,,4,4,3,1,5,3,5,4,4,1,2,1,2,4,4,5,2,3,5,5,,Yes,,Complete
+88,42,Charles City,126,Health Brigade - Richmond,1982,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,2,3,4,5,1,3,2,4,3,1,1,1,1,3,3,5,5,1,3,5,,Yes,,Complete
+89,37,Dryden,1199,Health Brigade - Richmond,1987,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,3,5,3,2,2,1,3,3,3,4,2,1,5,5,3,5,4,4,4,5,,Yes,,Complete
+90,42,RIchmond,185,Lenowisco Health District / Wise Co. ,1982,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,3,5,5,5,4,1,5,3,2,5,2,3,5,2,4,5,3,2,4,5,,Yes,,Complete
+91,46,Richmond,1533,Health Brigade - Richmond,1978,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,Yes,No,,5,4,2,5,5,1,5,1,1,5,1,3,4,2,3,5,2,5,3,5,,Yes,,Complete
+92,47,Roanoke,122,Lenowisco Health District / Wise Co. ,1977,Male,No,Yes,No,No,No,,,Full-time,Part-time,Yes,No,No,No,No,No,No,,2,2,5,5,4,2,5,1,1,5,2,2,5,5,5,5,5,1,2,5,,Yes,,Complete
+93,53,Virginia Beach @ HB,1449,Lenowisco Health District / Wise Co. ,1971,Male,No,Yes,No,No,No,,,Not employed,Not employed,No,No,No,No,No,Yes,No,,4,4,1,2,1,1,1,5,3,5,3,3,4,5,3,5,1,1,1,5,,Yes,,Complete
+94,50,Richmond,1879,Health Brigade - Richmond,1974,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,Yes,No,,3,3,4,1,3,2,5,4,2,5,3,1,5,1,4,SK,2,1,2,4,,Yes,,Complete
+95,53,Richmond,1645,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1971,Male,Yes,No,No,No,No,,,Full-time,Full-time,Yes,No,No,No,Yes,No,No,,3,1,3,4,4,1,5,3,1,5,2,1,5,4,5,4,3,1,5,5,,Yes,,Complete
+96,37,Richmond,24,Health Brigade - Richmond,1987,Male,No,No,No,No,Yes,,,Part-time,Not employed,Yes,No,No,No,No,No,No,,2,1,5,5,4,2,1,2,5,5,2,1,3,3,3,5,4,2,3,5,,Yes,,Complete
+97,32,Roanoke,1187,Mt. Rogers Health District/ Smyth Co. ,1992,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,4,1,5,5,1,2,5,5,2,5,1,1,1,3,3,5,1,5,2,5,,Yes,,Complete
+98,64,Marion,832,Health Brigade - Richmond,1960,Female,No,No,Yes,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,3,3,5,5,3,1,3,2,2,5,1,3,4,5,4,5,3,5,1,5,,Yes,,Complete
+99,53,Virginia Beach @ HB,1621,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1971,Male,No,Yes,No,No,No,,,Not employed,Not employed,No,No,No,No,Yes,Yes,No,,5,5,1,5,1,3,5,3,5,5,1,1,3,1,4,4,4,5,5,4,,Yes,,Complete
+100,30,"Springfield, VA (Fairfax)",1431,Health Brigade - Richmond,1994,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,2,2,5,1,3,5,5,5,5,2,3,5,1,1,5,5,3,1,5,,Yes,,Complete
+101,47,"Springfield, VA",1284,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1977,Female,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,No,No,,4,5,1,4,1,1,5,5,3,5,3,2,3,2,3,5,1,2,3,5,,Yes,,Complete
+102,64,Richmond,831,Health Brigade - Richmond,1960,Female,No,No,No,Yes,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,2,2,3,SK,5,1,3,4,4,1,2,3,4,2,3,5,2,3,3,5,,Yes,,Complete
+103,46,Roanoke,1388,Mt. Rogers Health District/ Smyth Co. ,1978,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,2,4,5,4,1,1,5,5,5,2,3,5,1,1,5,1,3,4,3,,Yes,,Complete
+104,40,Alexandria,1021,Council of Community Services - Roanoke ,1984,Male,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,Yes,No,,4,1,5,5,5,2,1,2,2,5,1,SK,1,2,3,5,4,3,4,5,,Yes,,Complete
+105,45,Roanoke,883,Lenowisco Health District / Wise Co. ,1979,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,Yes,No,,4,2,5,5,3,1,5,3,4,5,2,3,4,1,4,5,1,1,5,5,,Yes,,Complete
+106,48,Ashland,562,Council of Community Services - Roanoke ,1976,Female,No,No,No,No,Yes,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,5,4,2,1,2,1,3,1,1,5,1,3,1,2,5,5,5,3,1,5,,Yes,,Complete
+107,32,Richmond,930,Mt. Rogers Health District/ Smyth Co. ,1992,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,3,1,3,5,2,2,4,3,5,1,2,2,1,4,4,5,4,4,1,5,,Yes,,Complete
+108,48,Roanoke,1239,Virginia Harm Reduction Coalition/Roanoke,1976,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,4,1,5,3,3,2,5,5,2,5,1,2,1,3,5,5,2,1,1,5,,Yes,,Complete
+109,33,Charles City,1208,Health Brigade - Richmond,1991,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,Yes,No,Yes,Yes,No,,3,1,3,5,3,1,5,1,2,1,1,1,3,5,2,5,5,2,5,4,,Yes,,Complete
+110,28,Roanoke County,840,Health Brigade - Richmond,1996,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,4,5,5,3,3,5,2,4,5,2,2,5,4,1,5,4,1,3,5,,Yes,,Complete
+111,42,"Coeburn, VA",1307,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1982,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,Yes,No,No,Yes,No,,1,3,5,5,1,3,1,5,5,3,2,1,1,4,1,5,3,5,5,5,,Yes,,Complete
+112,52,Roanoke County,1934,Council of Community Services - Roanoke ,1972,Male,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,Yes,No,No,,3,5,5,2,1,2,5,3,1,4,1,2,3,1,1,5,2,3,3,5,,Yes,,Complete
+113,40,"Springfield, VA (Fairfax)",1879,Health Brigade - Richmond,1984,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,3,2,2,4,4,1,5,4,2,5,1,2,5,3,5,5,2,5,1,5,,Yes,,Incomplete
+114,18,Richmond,337,Health Brigade - Richmond,2006,Male,Yes,No,No,No,No,,,Full-time,Not employed,No,No,No,No,No,No,No,,3,3,5,5,4,3,1,5,5,5,3,SK,5,2,3,5,5,2,2,5,,Yes,,Complete
+115,52,Roanoke and Salem,162,Health Brigade - Richmond,1972,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,1,1,4,3,2,2,3,2,5,1,2,1,3,4,5,5,1,1,5,,Yes,,Complete
+116,43,Roanoke,1291,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1981,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,5,2,5,3,4,1,5,3,5,5,1,3,5,2,2,5,4,1,5,5,,Yes,,Complete
+117,45,Richmond,1169,Virginia Harm Reduction Coalition/Roanoke,1979,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,3,5,2,3,1,3,1,5,5,2,3,5,4,4,5,2,5,2,5,,Yes,,Complete
+118,39,Roanoke,1427,Health Brigade - Richmond,1985,Female,Yes,No,No,No,No,,,Full-time,Part-time,No,No,No,No,No,No,No,,2,1,5,1,1,2,4,2,4,5,2,3,5,5,4,5,1,3,2,5,,Yes,,Complete
+119,48,Roanoke,582,Mt. Rogers Health District/ Smyth Co. ,1976,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,2,4,3,5,1,3,5,5,2,5,2,3,5,1,2,5,1,4,4,5,,Yes,,Complete
+120,42,Lee,894,Health Brigade - Richmond,1982,Female,No,Yes,No,No,No,,,Not employed,Not employed,Yes,Yes,No,No,No,No,No,,1,5,5,5,5,2,5,5,2,5,2,1,5,4,2,5,5,3,4,5,,Yes,,Complete
+121,41,Richmond,1423,Council of Community Services - Roanoke ,1983,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,4,5,2,5,4,3,5,3,4,5,3,2,3,1,4,5,2,1,4,5,,Yes,,Complete
+122,24,RIchmond,745,"Strength In Peers - Harrisonburg, Rockingham Co., Page Co., Shenandoah Co. ",2000,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,Yes,No,Yes,Yes,No,,4,2,1,5,3,2,4,5,5,5,2,2,3,4,2,5,4,1,5,5,,Yes,,Complete
+123,45,Alexandria,1456,Mt. Rogers Health District/ Smyth Co. ,1979,Female,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,Yes,No,,5,4,4,5,4,1,3,1,5,5,2,2,5,4,2,5,1,1,5,5,,Yes,,Complete
+124,26,Roanoke,1233,Virginia Harm Reduction Coalition/Roanoke,1998,Female,Yes,No,No,No,No,,,Part-time,Part-time,No,No,No,No,No,No,No,,3,4,2,1,3,3,5,5,3,5,2,3,4,1,2,4,1,1,3,5,,Yes,,Complete
+125,40,Richmond,991,Health Brigade - Richmond,1984,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,2,5,5,5,2,2,1,5,5,5,2,1,2,2,5,5,3,3,2,4,,Yes,,Complete
+126,48,"Springfield, VA",294,Health Brigade - Richmond,1976,Male,No,No,No,No,Yes,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,1,4,1,4,3,5,1,4,4,2,3,3,1,1,3,3,4,2,5,,Yes,,Complete
+127,32,Centreville,18,Lenowisco Health District / Wise Co. ,1992,Male,Yes,No,No,No,No,,,Part-time,Part-time,Yes,No,No,No,No,No,No,,1,1,5,5,5,1,1,5,4,5,1,3,5,2,1,5,3,1,4,4,,Yes,,Complete
+128,70,Roanoke,542,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1954,Male,No,No,No,Yes,No,,,Not employed,Full-time,Yes,No,Yes,No,No,Yes,No,,4,1,3,3,5,2,1,5,1,1,1,3,1,2,5,5,1,2,4,3,,Yes,,Complete
+129,43,Rockingham,670,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1981,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,Yes,No,,1,4,5,5,3,1,3,3,2,1,2,3,SK,1,5,5,1,5,3,5,,Yes,,Complete
+130,46,Roanoke,503,Health Brigade - Richmond,1978,Female,Yes,No,No,No,No,,,Not employed,Full-time,No,No,No,No,No,No,No,,3,3,1,5,5,1,5,2,3,5,2,2,5,5,4,5,1,4,1,5,,Yes,,Complete
+131,58,"Coeburn, VA",895,Health Brigade - Richmond,1966,Male,No,No,No,No,Yes,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,3,2,1,3,5,2,5,2,1,4,1,1,1,5,3,5,1,2,5,5,,Yes,,Complete
+132,31,Roanoke,87,Health Brigade - Richmond,1993,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,3,1,5,5,5,SK,1,4,4,5,2,3,2,2,1,5,3,5,2,5,,Yes,,Complete
+133,35,Roanoke County,1342,"Strength In Peers - Harrisonburg, Rockingham Co., Page Co., Shenandoah Co. ",1989,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,Yes,No,No,,1,2,5,5,1,SK,1,5,1,1,1,3,1,4,5,5,4,3,5,5,,Yes,,Complete
+134,54,Dryden,1100,Health Brigade - Richmond,1970,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,4,5,2,3,1,1,3,4,5,5,1,SK,5,3,5,5,3,4,4,5,,Yes,,Complete
+135,47,Richmond,299,Virginia Harm Reduction Coalition/Roanoke,1977,Female,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,2,4,4,1,1,3,4,4,3,1,SK,4,4,4,5,1,3,2,5,,Yes,,Complete
+136,43,Richmond,1492,Virginia Harm Reduction Coalition/Roanoke,1981,Male,No,No,No,Yes,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,4,1,3,5,4,3,1,3,2,5,1,SK,1,3,1,5,3,3,5,5,,Yes,,Complete
+137,57,Richmond ,1506,Health Brigade - Richmond,1967,Female,No,Yes,No,No,No,,,Full-time,Full-time,No,No,No,No,No,No,No,,4,4,1,5,1,1,1,4,1,1,2,SK,2,5,3,5,5,5,4,5,,Yes,,Complete
+138,33,Richmond,1532,Health Brigade - Richmond,1991,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,4,1,5,5,3,1,5,3,2,5,3,3,2,2,5,5,2,5,4,5,,Yes,,Complete
+139,58,Roanoke,1478,Mt. Rogers Health District/ Smyth Co. ,1966,Male,Yes,No,No,No,No,,,Not employed,Full-time,No,No,No,No,Yes,No,Yes,,5,2,5,5,5,3,5,1,3,5,1,3,5,1,3,5,5,3,2,5,,Yes,,Complete
+140,36,N. Chesterfield,1279,Mt. Rogers Health District/ Smyth Co. ,1988,Female,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,No,No,,1,1,3,5,2,1,1,3,2,5,3,3,3,5,2,3,1,5,1,5,,Yes,,Complete
+141,46,Roanoke,1842,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1978,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,5,1,5,1,1,5,5,5,5,2,2,5,2,5,2,1,5,5,5,,Yes,,Complete
+142,47,Norfolk,1916,Health Brigade - Richmond,1977,Female,No,Yes,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,1,4,5,5,4,1,1,4,4,5,1,3,3,2,3,5,5,3,3,4,,Yes,,Complete
+143,40,Norfolk,1977,Virginia Harm Reduction Coalition/Roanoke,1984,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,Yes,No,,5,4,2,1,2,2,1,3,3,5,1,2,3,2,3,5,3,2,2,4,,Yes,,Complete
+144,39,Roanoke,189,Health Brigade - Richmond,1985,Male,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,No,No,No,,4,3,1,5,5,1,5,3,4,4,1,3,5,1,3,1,4,1,3,3,,Yes,,Complete
+145,50,Augusta,651,Health Brigade - Richmond,1974,Male,Yes,No,No,No,No,,,Full-time,Full-time,No,No,No,No,Yes,No,Yes,,5,2,1,4,1,2,5,2,5,5,1,2,1,4,4,5,4,5,5,5,,Yes,,Complete
+146,51,Roanoke,1228,Mt. Rogers Health District/ Smyth Co. ,1973,Male,No,No,Yes,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,1,3,4,5,4,1,5,2,2,1,2,3,5,4,5,5,4,3,4,5,,Yes,,Complete
+147,47,Virginia Beach,329,Council of Community Services - Roanoke ,1977,Male,No,No,No,Yes,No,,,Part-time,Full-time,Yes,No,No,No,No,No,No,,3,3,1,5,2,1,5,5,2,5,2,2,3,5,5,5,3,4,5,5,,Yes,,Complete
+148,50,Richmond,632,Mt. Rogers Health District/ Smyth Co. ,1974,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,No,No,No,,2,1,1,3,4,3,5,2,2,5,1,3,4,1,4,5,1,5,3,5,,Yes,,Complete
+149,48,Chesterfield,641,Health Brigade - Richmond,1976,Male,No,Yes,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,Yes,No,,4,4,1,3,2,3,2,1,5,5,1,SK,1,2,5,4,2,3,2,5,,Yes,,Complete
+150,28,Smyth,419,Lenowisco Health District / Wise Co. ,1996,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,4,3,5,5,4,2,5,4,2,5,2,1,1,1,1,4,3,2,2,5,,Yes,,Complete
+151,32,Fairfax,1120,Health Brigade - Richmond,1992,Male,Yes,No,No,No,No,,,Full-time,Full-time,Yes,No,No,No,No,No,No,,1,2,4,4,5,3,5,5,2,1,2,3,5,4,4,5,4,5,5,5,,Yes,,Complete
+152,25,Roanoke City,586,Health Brigade - Richmond,1999,Male,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,2,2,1,4,4,2,3,5,4,4,1,3,1,4,4,5,5,2,1,5,,Yes,,Complete
+153,48,Norfolk,200,Health Brigade - Richmond,1976,Male,No,Yes,No,No,No,,,Not employed,Not employed,No,No,No,No,No,Yes,No,,1,2,1,SK,1,3,2,5,2,5,2,2,4,4,1,5,2,1,3,5,,Yes,,Complete
+154,39,Richmond,1068,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1985,Female,Yes,No,No,No,No,,,Not employed,Not employed,No,No,No,No,No,No,No,,4,2,3,5,3,2,3,1,2,5,1,2,5,3,2,5,5,3,3,5,,Yes,,Complete
+155,46,Richmond,1947,Health Brigade - Richmond,1978,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,4,1,5,2,2,5,4,2,5,1,1,5,3,2,4,1,5,3,5,,Yes,,Complete
+156,66,Richmond,1386,Health Brigade - Richmond,1958,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,2,1,5,2,5,2,4,5,2,3,1,1,5,5,5,5,5,3,5,5,,Yes,,Complete
+157,51,Roanoke,917,Council of Community Services - Roanoke ,1973,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,4,4,1,1,5,1,1,5,5,5,2,2,4,5,3,5,1,1,4,5,,Yes,,Incomplete
+158,34,Richmond,562,Health Brigade - Richmond,1990,Female,No,No,No,No,Yes,,,Not employed,Full-time,Yes,No,No,No,No,Yes,No,,2,4,5,1,3,1,3,5,3,5,3,2,1,3,5,5,5,3,1,5,,Yes,,Complete
+159,37,Marion,538,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1987,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,2,2,1,5,3,3,5,2,2,5,3,3,1,1,4,5,5,1,1,5,,Yes,,Complete
+160,31,"Coeburn, Va",1254,Mt. Rogers Health District/ Smyth Co. ,1993,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,Yes,No,No,,2,2,5,SK,1,2,5,4,3,5,3,3,5,1,5,5,2,4,4,5,,No,,Complete
+161,34,Virginia Beach,1989,Health Brigade - Richmond,1990,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,No,,4,3,3,1,1,2,5,4,1,1,3,2,2,2,3,1,2,5,1,5,,Yes,,Complete
+162,46,Richmond,1557,Health Brigade - Richmond,1978,Male,No,Yes,No,No,No,,,Not employed,Not employed,No,No,No,No,Yes,No,No,,5,1,1,5,4,SK,5,5,4,1,3,2,5,5,1,5,3,4,1,5,,Yes,,Complete
+163,51,Marion,205,Council of Community Services - Roanoke ,1973,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,Yes,No,Yes,,5,2,5,5,1,1,1,4,4,4,1,2,5,5,1,5,1,3,5,5,,Yes,,Complete
+164,35,Richmond,1179,Health Brigade - Richmond,1989,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,3,1,2,5,4,3,3,2,3,5,1,3,3,1,4,5,2,5,3,5,,Yes,,Complete
+165,46,Richmond,1960,Health Brigade - Richmond,1978,Female,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,Yes,No,No,No,No,,4,3,2,3,2,1,1,4,2,5,2,3,5,4,2,5,2,4,2,5,,Yes,,Complete
+166,44,Rockingham,1244,Health Brigade - Richmond,1980,Female,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,Yes,No,Yes,,5,4,5,2,5,2,5,5,4,4,3,3,5,5,1,SK,1,2,1,5,,Yes,,Complete
+167,36,Roanoke,1730,Virginia Harm Reduction Coalition/Roanoke,1988,Female,Yes,No,No,No,No,,,Part-time,Part-time,Yes,No,No,No,Yes,No,No,,5,3,1,4,1,3,5,3,1,5,2,1,5,2,4,5,1,5,3,5,,Yes,,Complete
+168,36,Henrico,157,Health Brigade - Richmond,1988,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,Yes,No,No,,5,2,5,5,5,1,1,4,4,5,1,3,5,1,1,4,4,3,4,5,,Yes,,Complete
+169,59,Richmond,1736,Lenowisco Health District / Wise Co. ,1965,Male,Yes,No,No,No,No,,,Full-time,Part-time,Yes,No,No,No,No,Yes,No,,5,4,4,5,1,2,5,3,2,5,2,1,1,4,2,5,4,5,2,5,,Yes,,Complete
+170,73,Rockingham,747,Health Brigade - Richmond,1951,Female,Yes,No,No,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,5,3,5,5,4,3,2,3,4,5,2,2,5,5,1,5,5,2,1,5,,Yes,,Complete
+171,52,"Springfield, VA (Fairfax)",1245,Council of Community Services - Roanoke ,1972,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,Yes,,5,3,2,2,5,2,1,3,3,5,1,1,5,4,4,5,1,5,2,5,,Yes,,Complete
+172,49,Richmond,410,Mt. Rogers Health District/ Smyth Co. ,1975,Male,No,Yes,No,No,No,,,Full-time,Full-time,Yes,No,No,No,No,No,No,,5,5,1,4,1,2,1,1,2,5,2,2,1,2,2,5,1,2,2,4,,Yes,,Complete
+173,45,RIchmond,1264,Council of Community Services - Roanoke ,1979,Male,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,No,No,Yes,,2,3,1,5,2,1,5,4,1,5,1,2,2,2,2,4,1,2,3,5,,Yes,,Complete
+174,33,Roanoke,1976,Virginia Harm Reduction Coalition/Roanoke,1991,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,Yes,,3,2,2,5,1,3,1,1,5,5,2,2,5,3,1,5,2,3,1,5,,Yes,,Complete
+175,49,Norfolk,427,Mt. Rogers Health District/ Smyth Co. ,1975,Female,No,Yes,No,No,No,,,Not employed,Full-time,No,Yes,No,No,No,Yes,Yes,,3,2,4,5,2,3,3,5,5,1,2,SK,2,4,4,5,5,1,3,4,,Yes,,Complete
+176,45,Fairfax,1757,Council of Community Services - Roanoke ,1979,Male,No,No,Yes,No,No,,,Not employed,Full-time,Yes,No,No,No,No,No,No,,1,2,5,1,1,3,4,5,1,5,2,3,4,4,4,5,4,5,4,5,,Yes,,Complete
+177,44,Norton,1139,Lenowisco Health District / Wise Co. ,1980,Male,Yes,No,No,No,No,,,Not employed,Full-time,No,No,No,No,Yes,Yes,No,,5,5,3,5,3,3,5,3,2,3,1,3,1,2,5,4,1,2,4,5,,Yes,,Incomplete
+178,40,Centreville,1563,Health Brigade - Richmond,1984,Female,Yes,No,No,No,No,,,Full-time,Not employed,No,No,No,No,No,No,No,,2,4,5,3,3,2,5,4,5,1,2,3,5,4,3,5,3,2,2,5,,Yes,,Complete
+179,27,Norton,1879,Health Brigade - Richmond,1997,Male,No,Yes,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,1,4,1,5,1,3,5,4,1,3,3,1,5,2,3,4,3,4,3,5,,Yes,,Complete
+180,37,Richmond,228,Council of Community Services - Roanoke ,1987,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,Yes,Yes,,2,3,5,5,1,3,5,4,5,5,2,SK,1,1,2,5,2,2,3,4,,Yes,,Complete
+181,57,Richmond,1325,"Strength In Peers - Harrisonburg, Rockingham Co., Page Co., Shenandoah Co. ",1967,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,1,4,5,3,1,3,5,1,4,5,1,SK,3,2,1,5,4,3,3,5,,Yes,,Complete
+182,39,Roanoke,593,Council of Community Services - Roanoke ,1985,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,5,4,5,2,2,3,3,4,5,4,1,2,5,2,4,5,3,2,2,5,,No,,Complete
+183,20,Richmond,1767,Health Brigade - Richmond,2004,Male,Yes,No,No,No,No,,,Full-time,Full-time,Yes,No,No,No,No,No,No,,3,4,4,3,3,2,5,2,2,5,3,3,5,4,2,4,3,4,4,5,,Yes,,Complete
+184,32,Richmond,701,Health Brigade - Richmond,1992,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,No,No,No,No,No,No,,5,1,5,1,1,2,2,5,4,5,1,2,1,5,4,5,1,5,5,5,,Yes,,Complete
+185,43,Richmond,1333,Health Brigade - Richmond,1981,Female,Yes,No,No,No,No,,,Part-time,Not employed,Yes,No,No,No,No,No,No,,5,1,5,5,3,2,5,4,4,5,1,3,5,3,3,5,3,2,5,5,,Yes,,Complete
+186,33,Richmond,373,Lenowisco Health District / Wise Co. ,1991,Female,Yes,No,No,No,No,,,Part-time,Full-time,Yes,Yes,No,No,Yes,No,No,,5,4,5,5,5,1,1,4,1,5,1,2,5,4,4,5,2,5,2,5,,Yes,,Complete
+187,30,Fairfax,453,Health Brigade - Richmond,1994,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,Yes,No,,3,4,5,3,3,2,5,2,4,5,1,2,5,1,4,4,2,3,1,5,,Yes,,Complete
+188,39,Richmond,1165,Health Brigade - Richmond,1985,Male,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,Yes,No,,3,5,5,5,2,1,5,2,1,5,1,3,5,4,5,5,1,5,4,5,,Yes,,Complete
+189,53,Centreville,1293,Health Brigade - Richmond,1971,Male,Yes,No,No,No,No,,,Part-time,Part-time,Yes,No,Yes,No,No,Yes,No,,1,2,5,2,3,2,5,1,1,1,3,3,5,4,2,2,1,2,3,5,,Yes,,Complete
+190,32,Henrico,291,Health Brigade - Richmond,1992,Male,No,No,Yes,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,5,1,5,5,2,3,SK,3,2,5,2,1,5,5,2,3,3,4,4,5,,Yes,,Complete
+191,50,"Springfield, VA (Fairfax)",1563,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1974,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,4,3,5,1,2,5,5,2,3,1,1,4,5,1,3,2,4,5,5,,Yes,,Complete
+192,64,"Coeburn, VA",1584,Chris Atwood Foundation - Fairfax Co. Prince William Co.,1960,Female,Yes,No,No,No,No,,,Not employed,Part-time,Yes,No,No,No,No,No,No,,4,2,5,5,5,1,5,2,4,5,1,3,4,2,2,5,3,4,2,5,,Yes,,Complete
+193,35,Roanoke,974,Health Brigade - Richmond,1989,Male,No,Yes,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,3,4,3,5,3,1,1,2,2,5,2,3,5,3,5,5,5,3,1,5,,Yes,,Complete
+194,52,Roanoke,668,Lenowisco Health District / Wise Co. ,1972,Female,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,3,5,3,5,4,1,5,1,1,5,3,3,2,3,5,4,5,3,4,5,,Yes,,Complete
+195,40,RIchmond,1265,Lenowisco Health District / Wise Co. ,1984,Female,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,No,No,No,,5,5,1,5,3,3,5,5,4,5,2,3,5,1,1,5,1,4,4,5,,Yes,,Complete
+196,42,Richmond,168,Health Brigade - Richmond,1982,Male,Yes,No,No,No,No,,,Not employed,Full-time,No,No,No,No,Yes,No,Yes,,1,5,5,5,5,2,1,1,5,5,3,3,1,5,4,5,5,1,2,4,,Yes,,Complete
+197,43,Centreville,1647,Health Brigade - Richmond,1981,Male,Yes,No,No,No,No,,,Not employed,Not employed,Yes,No,No,No,No,No,No,,2,5,5,4,5,1,1,2,1,5,1,2,3,3,4,1,4,1,2,5,,Yes,,Complete
+198,41,Virginia Beach,735,Virginia Harm Reduction Coalition/Roanoke,1983,Female,Yes,No,No,No,No,,,Full-time,Not employed,No,No,No,No,Yes,No,Yes,,5,5,1,4,5,2,1,2,4,5,1,2,4,2,5,5,1,3,1,5,,Yes,,Complete
+199,42,Roanoke,541,"(MASS) Minority AIDS Support Services - Newport News, Norfolk, Virginia Beach",1982,Female,Yes,No,No,No,No,,,Part-time,Full-time,No,No,No,No,No,No,No,,1,5,1,1,4,1,1,2,1,3,2,3,2,1,2,4,3,3,2,5,,Yes,,Complete
+200,53,Richmond,136,Health Brigade - Richmond,1971,Male,Yes,No,No,No,No,,,Not employed,Part-time,No,No,No,No,No,No,No,,1,2,4,SK,3,1,4,2,1,5,1,3,3,5,3,3,4,2,2,5,,Yes,,Complete
