@@ -30,5 +30,15 @@ reports/*.rtf
 !reports/*.pdf
 !data/synthetic/**
 
+# Office/backup temps (optional)
+~$*
+*.bak
+*.old
+
+# Jupyter/RStudio caches (optional)
+.ipynb_checkpoints/
+.Rhistory
+.Rproj.user/
+
 # Optional: ignore any private local data you may point to
 data/private/**
