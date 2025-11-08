@@ -17,6 +17,10 @@ options mprint mlogic symbolgen;
 %let OUT_SUB=&ROOT./reports/VDH_CHR_Survey_Subgroups_Final.pdf;
 %let OUT_DER=&ROOT./data/derived;
 
+/* Optional: confirm in SASLOG */
+%put NOTE: DATA_SOURCE=&DATA_SOURCE INFILE=&INFILE;
+%put NOTE: OUT_TOT=&OUT_TOT OUT_SUB=&OUT_SUB OUT_DER=&OUT_DER;
+
 /* Run modules */
 %include "&ROOT./code/sas/01_totals.sas";
 %include "&ROOT./code/sas/02_subgroups.sas";
