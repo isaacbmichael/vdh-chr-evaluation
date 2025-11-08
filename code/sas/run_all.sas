@@ -1,26 +1,70 @@
 /* SPDX-License-Identifier: MIT */
-options mprint mlogic symbolgen;
+/* -----------------------------------------------------------------------------
+   VDH CHR — Run-All Orchestrator (run_all.sas)
 
-/* -------- repo-relative paths -------- */
-%let ROOT=.;
-%let DATA_SOURCE = synthetic;   /* synthetic | real */
+   What this does:
+     - Chooses the input (synthetic CSV by default; toggle to REAL for XLSX).
+     - Ensures output folders exist.
+     - Defines standard OUT_* macro vars used by the report modules.
+     - Runs 01_totals.sas and 02_subgroups.sas.
 
-/* Input selection */
+   Usage:
+     %include "code/sas/run_all.sas";
+----------------------------------------------------------------------------- */
+
+/* ---------- Session options (quiet by default) ---------- */
+/* Uncomment the next line if you want verbose macro logging for debugging.    */
+/* options mprint mlogic symbolgen;                                            */
+
+options
+  validvarname=v7           /* v7-style names after IMPORT                  */
+  nodate nonumber           /* cleaner PDF pages                            */
+;
+
+/* ---------- Paths & data source toggle ---------- */
+%let ROOT = .;                      /* repository root (relative)              */
+%let DATA_SOURCE = synthetic;       /* synthetic | real                        */
+
+/* ---------- Input selection ---------- */
 %macro set_input;
-  %if &DATA_SOURCE=synthetic %then %let INFILE=&ROOT./data/synthetic/chr_survey.csv;
-  %else %let INFILE=C:\secure\VDH_CHR_ClientSurvey_2023.xlsx;  /* local, not committed */
+  %if &DATA_SOURCE = synthetic %then
+    %let INFILE = &ROOT./data/synthetic/chr_survey.csv;
+  %else
+    %let INFILE = C:\secure\VDH_CHR_ClientSurvey_2023.xlsx;  /* local, not committed */
 %mend;
 %set_input;
 
-/* Outputs */
-%let OUT_TOT=&ROOT./reports/VDH_CHR_Survey_Totals_Final.pdf;
-%let OUT_SUB=&ROOT./reports/VDH_CHR_Survey_Subgroups_Final.pdf;
-%let OUT_DER=&ROOT./data/derived;
+/* ---------- Ensure output directories exist (portable) ---------- */
+%macro ensure_dir(dir);
+  %local _exists;
+  %let _exists = %sysfunc(fileexist(&dir));
+  %if &_exists = 0 %then %do;
+    options dlcreatedir;
+    libname _mk "&dir";
+    libname _mk clear;
+  %end;
+%mend;
 
-/* Optional: confirm in SASLOG */
-%put NOTE: DATA_SOURCE=&DATA_SOURCE INFILE=&INFILE;
-%put NOTE: OUT_TOT=&OUT_TOT OUT_SUB=&OUT_SUB OUT_DER=&OUT_DER;
+/* Output roots */
+%let OUT_DIR_REP = &ROOT./reports;
+%let OUT_DIR_DER = &ROOT./data/derived;
 
-/* Run modules */
+/* Create them if missing */
+%ensure_dir(&OUT_DIR_REP);
+%ensure_dir(&OUT_DIR_DER);
+
+/* ---------- Output files used by modules ---------- */
+%let OUT_TOT = &OUT_DIR_REP./vdh_chr_survey_totals.pdf;
+%let OUT_SUB = &OUT_DIR_REP./vdh_chr_survey_subgroups.pdf;
+%let OUT_DER = &OUT_DIR_DER;
+
+/* ---------- Optional: echo config to SASLOG ---------- */
+%put NOTE- DATA_SOURCE=&DATA_SOURCE;
+%put NOTE- INFILE=&INFILE;
+%put NOTE- OUT_TOT=&OUT_TOT;
+%put NOTE- OUT_SUB=&OUT_SUB;
+%put NOTE- OUT_DER=&OUT_DER;
+
+/* ---------- Run modules ---------- */
 %include "&ROOT./code/sas/01_totals.sas";
 %include "&ROOT./code/sas/02_subgroups.sas";
