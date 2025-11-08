@@ -1,36 +1,34 @@
-cd vdh-chr-evaluation
-printf '%s\n' \
-'.DS_Store' \
-'Thumbs.db' \
-'' \
-'# SAS generated data/catalogs' \
-'*.sas7bdat' \
-'*.sas7bcat' \
-'*.sas7bvew' \
-'*.sas7bndx' \
-'*.sashdat' \
-'' \
-'# SAS logs & temp files' \
-'*.log' \
-'*.lst' \
-'*.tmp' \
-'' \
-'# SAS WORK directories (sometimes named differently by system)' \
-'work/' \
-'saswork*/' \
-'' \
-'# Derived outputs (recreated by the build)' \
-'data/derived/' \
-'reports/*.rtf' \
-'' \
-'# Keep public artifacts' \
-'!reports/*.pdf' \
-'!data/synthetic/**' \
-'' \
-'# Editors/OS' \
-'.vscode/' \
-'.idea/' \
-'> .gitignore'
-git add .gitignore
-git commit -m "Add SAS-friendly .gitignore"
-git push
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+
+# SAS generated data/catalogs (never commit)
+*.sas7bdat
+*.sas7bcat
+*.sas7bvew
+*.sas7bndx
+*.sashdat
+
+# SAS logs & temp
+*.log
+*.lst
+*.tmp
+
+# SAS WORK directories
+work/
+saswork*/
+
+# Rebuilt artifacts
+data/derived/
+reports/*.rtf
+
+# Keep public artifacts
+!reports/*.pdf
+!data/synthetic/**
+
+# Optional: ignore any private local data you may point to
+data/private/**
