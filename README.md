@@ -91,9 +91,9 @@ You can publish a short case study from `docs/`:
 ---
 
 ## ⚠️ Disclaimer
-This project is for educational and demonstration purposes only. It does not constitute financial advice. Past performance is not indicative of future results.
+This repository is for educational and demonstration purposes related to public-health analytics. It is **not medical or clinical advice**, and it is **not an official VDH publication**. Results depend on data quality and methods and may not generalize without independent validation. No PHI/PII is included; public artifacts use de-identified or synthetic data. Code and documentation are provided **“as is”** without warranty.
 
-> Additionally, this repository is a **neutral demo** for portfolio/teaching purposes. It is **not affiliated** with VDH beyond the authorized evaluation release. No PHI/PII is included.
+> Additionally, this repository is a **neutral demo** for portfolio/teaching purposes. It is **not affiliated** with VDH beyond the authorized evaluation release.
 
 ---
 
