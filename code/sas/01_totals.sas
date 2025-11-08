@@ -18,8 +18,10 @@ How this module is called:
 --------------------------------------------------------------------------------*/
 
 /* ---------- Session options (portable) ---------- */
+/* Quiet by default; uncomment next line to debug macros:                */
+/* options mprint mlogic symbolgen;                                      */
 options
-  mprint nomlogic nosymbolgen /* quiet by default; flip on if debugging   */
+  nomprint nomlogic nosymbolgen
   validvarname=v7             /* V7-style names after IMPORT              */
   nodate nonumber             /* cleaner PDF pages                        */
   orientation=landscape;
@@ -201,17 +203,36 @@ proc freq data=work.hear_harm_long order=freq;
 run;
 title;
 
-/* ---------- Satisfaction / helpfulness (collapsed) ---------- */
-/* Build labeled copies with consistent buckets */
+/* ---------- Satisfaction / helpfulness (collapsed, robust to types) ---------- */
+%let _help_vars = q1_helpful q2_helpful_food q3_helpful_housing q4_helpful_mh
+                  q7_syphilis_info q8_hep_c_info q9_suicide_info q10_hiv_info;
+%let _sat_vars  = q5_satisfaction_needle q14_fentanyl_satisfaction q16_xylazine_satisfaction
+                  q17_harm_satisfaction q18_van_satisfaction q20_overall_satisfaction;
+
+/* Make guaranteed-character copies so PROC IMPORT type guesses don't break recoding */
 data work.ratings;
   set work.vdh_chr_data;
-  array help_q[8]  $ q1_helpful q2_helpful_food q3_helpful_housing q4_helpful_mh
-                        q7_syphilis_info q8_hep_c_info q9_suicide_info q10_hiv_info;
-  array sat_q[6]   $ q5_satisfaction_needle q14_fentanyl_satisfaction q16_xylazine_satisfaction
-                        q17_harm_satisfaction q18_van_satisfaction q20_overall_satisfaction;
 
-  /* helper: convert to ordered categories 1–5 or 'NA/Skip' */
+  /* create _c copies as character using VVALUEX() */
+  %macro _mk_char(list);
+    %local i v;
+    %do i=1 %to %sysfunc(countw(&list));
+      %let v=%scan(&list,&i);
+      length &v._c $20;
+      &v._c = strip(vvaluex("&v"));
+    %end;
+  %mend;
+  %_mk_char(&_help_vars);
+  %_mk_char(&_sat_vars);
+
+  /* recode the character copies into labeled buckets */
+  array help_q[8]  $  q1_helpful_c q2_helpful_food_c q3_helpful_housing_c q4_helpful_mh_c
+                        q7_syphilis_info_c q8_hep_c_info_c q9_suicide_info_c q10_hiv_info_c;
+  array sat_q[6]   $  q5_satisfaction_needle_c q14_fentanyl_satisfaction_c q16_xylazine_satisfaction_c
+                        q17_harm_satisfaction_c q18_van_satisfaction_c q20_overall_satisfaction_c;
+
   length _resp $18;
+
   do _i=1 to dim(help_q);
     _resp = strip(help_q[_i]);
     select (_resp);
@@ -235,21 +256,22 @@ data work.ratings;
       otherwise sat_q[_i] = 'NA/Skip';
     end;
   end;
+
   drop _i _resp;
 run;
 
 title "Program helpfulness items (stacked percentages)";
 proc freq data=work.ratings;
   tables
-    q1_helpful q2_helpful_food q3_helpful_housing q4_helpful_mh /
+    q1_helpful_c q2_helpful_food_c q3_helpful_housing_c q4_helpful_mh_c /
     missing nocum;
 run;
 
 title "Satisfaction items (stacked percentages)";
 proc freq data=work.ratings;
   tables
-    q5_satisfaction_needle q14_fentanyl_satisfaction q16_xylazine_satisfaction
-    q17_harm_satisfaction q18_van_satisfaction q20_overall_satisfaction /
+    q5_satisfaction_needle_c q14_fentanyl_satisfaction_c q16_xylazine_satisfaction_c
+    q17_harm_satisfaction_c q18_van_satisfaction_c q20_overall_satisfaction_c /
     missing nocum;
 run;
 title;
