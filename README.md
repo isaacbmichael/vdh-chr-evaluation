@@ -9,17 +9,18 @@
 
 ## ✨ Features
 - **Automated SAS pipeline** (one-command build) for Totals + Subgroups.  
-- **Standardized data model:** harmonized site/region, typed variables, labels, and formats.  
+- **Standardized data model:** harmonized site/region, typed variables, labels, and recodes.  
 - **Quality checks:** missingness scans, type/label validation, and cross-tab diagnostics.  
 - **Reusable outputs:** leadership-ready PDFs and CSV exports.  
 - **Synthetic data:** structurally faithful example dataset for safe reuse.  
 - **Dual licensing:** **MIT** (code) and **CC BY 4.0** (reports & figures).
 
 ### Components
-- `code/sas/00_formats.sas` — shared formats and labels.  
-- `code/sas/01_totals.sas` — program-wide Totals analysis.  
-- `code/sas/02_subgroups.sas` — stratified breakdowns (age, gender, race/ethnicity, site/region).  
-- `code/sas/run_all.sas` — top-level orchestrator.
+- `code/sas/01_totals.sas` — program-wide **Totals** analysis (imports data, derives fields, labels, and builds tables/charts; writes the Totals PDF).  
+- `code/sas/02_subgroups.sas` — **Subgroups** comparisons (demographics and site/region; writes the Subgroups PDF).  
+- `code/sas/run_all.sas` — top-level orchestrator (sets paths/switches and runs both scripts).  
+
+> Note: This project **does not** use custom `PROC FORMAT` catalogs. Labels/recodes are created inside data steps.
 
 ---
 
@@ -37,7 +38,7 @@ No special tooling beyond SAS is required.
     git clone https://github.com/isaacbmichael/vdh-chr-evaluation.git
     cd vdh-chr-evaluation
 
-    /* From SAS: run the full build */
+    /* From SAS: run the full build (uses synthetic data by default) */
     %include "code/sas/run_all.sas";
 
 **Outputs appear under:**
@@ -47,12 +48,11 @@ No special tooling beyond SAS is required.
 ---
 
 ## 📂 Repository Contents
-- `code/sas/` — modular SAS programs:
-  - `00_formats.sas` — shared formats and labels.
+- `code/sas/` — SAS programs:
   - `01_totals.sas` — program-wide Totals analysis.
-  - `02_subgroups.sas` — subgroup breakdowns.
-  - `run_all.sas` — one-command build orchestrator.
-- `data/synthetic/` — fabricated demo dataset (no PHI/PII).
+  - `02_subgroups.sas` — subgroup comparisons.
+  - `run_all.sas` — build orchestrator (paths + switches).
+- `data/synthetic/` — **fabricated** demo dataset (no PHI/PII).
 - `data/dictionary.csv` — variable names, labels, types, and valid values.
 - `reports/` — final PDFs:
   - `VDH_CHR_Survey_Totals_Final.pdf`
@@ -75,10 +75,10 @@ You can publish a short case study from `docs/`:
 ---
 
 ## 🎨 Customize It
-- **Data inputs:** replace `data/synthetic/` with your raw extracts; update imports if needed.  
-- **Formats & labels:** edit `00_formats.sas` to match your instrument.  
+- **Data inputs:** replace `data/synthetic/` with your raw extracts privately; keep public runs on synthetic data.  
+- **Labels & recodes:** edit the data-step arrays in `01_totals.sas` to match your instrument.  
 - **Subgroups:** adjust panel/group variables in `02_subgroups.sas`.  
-- **Exports:** add/remove ODS destinations (PDF/RTF/CSV) in `01_totals.sas` and `02_subgroups.sas`.
+- **Exports:** add/remove ODS destinations (PDF/RTF/CSV) in each script.
 
 ---
 
