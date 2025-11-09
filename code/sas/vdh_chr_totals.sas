@@ -124,9 +124,20 @@
   /* Optional: set the public repository URL for the cover page */
   %let REPO_URL=https://github.com/isaac-b-michael/vdh-chr-public;
 
+  /* Guardrail: fail fast if the CSV is missing */
+  %let __rc1 = %sysfunc(filename(__in,"&IN_CSV_PATH"));
+  %let __exists = %sysfunc(fexist(__in));
+  %let __rc2 = %sysfunc(filename(__in,));
+
   %put NOTE: REPO_ROOT   = &REPO_ROOT;
   %put NOTE: IN_CSV_PATH = &IN_CSV_PATH;
   %put NOTE: OUT_PDF_PATH= &OUT_PDF_PATH;
+
+  %if not &__exists %then %do;
+    %put ERROR: Input CSV not found at &IN_CSV_PATH ;
+    %put ERROR- Make sure the synthetic CSV exists, or set PROJECT_ROOT to your repo path.;
+    %abort cancel;
+  %end;
 %mend;
 %_set_paths();
 
