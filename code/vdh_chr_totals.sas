@@ -3,8 +3,7 @@
  * Public Example Package (Synthetic Data) - PDF + SAS/GRAPH Output
  *-----------------------------------------------------------------------------------------
  * AUTHOR:    Isaac B. Michael, PhD, MS, MApSt
- * CREATED:   2024-10-20
- * REVISED:   2025-11-08
+ * CREATED:   2024-10-20  REVISED:   2025-11-08
  *
  * PURPOSE
  *   This repository contains a reproducible SAS program that mirrors the structure and
@@ -19,18 +18,15 @@
  *   - A cover page explaining provenance, timeframe, and licensing.
  *
  * QUICK START (recommended)
- *   1) Clone or download this repository.
- *   2) Open this file in SAS 9.4 with SAS/GRAPH available (tested on 9.4M7).
- *   3) Run the program. It auto-detects the repo path and creates ./reports if needed.
+ *   1) Download ZIP → Extract All → open code/vdh_chr_totals.sas in SAS 9.4 (w/ SAS/GRAPH).
+ *   2) Run. It auto-detects the repo path and creates ./reports if needed.
+ *   3) If auto-detect fails, set ONE thing (on a single line):
+ *        %let PROJECT_ROOT=%str(C:\Users\you\Downloads\vdh-chr-evaluation-main);
+ *      (Windows backslashes OR forward slashes are both OK.)
  *
  * IF YOU SEE "Input CSV not found"
- *   Option A (simple): set PROJECT_ROOT to your local clone folder.
- *     %let PROJECT_ROOT=/Users/you/path/to/vdh-chr-evaluation;
- *
- *   Option B (explicit): set IN_CSV_PATH and OUT_PDF_PATH yourself. The macro will not
- *   overwrite them if already defined.
- *     %let IN_CSV_PATH=/Users/you/path/to/vdh-chr-evaluation/data/vdh_chr_survey_synthetic.csv;
- *     %let OUT_PDF_PATH=/Users/you/path/to/vdh-chr-evaluation/reports/vdh_chr_survey_totals.pdf;
+ *   Option A (simple): set PROJECT_ROOT as above.
+ *   Option B (explicit): set IN_CSV_PATH and OUT_PDF_PATH yourself (single line each).
  *
  * DATA NOTES
  *   - The included CSV (or your own) should follow the column schema expected below.
@@ -45,7 +41,6 @@
  * CONTRIBUTING / ISSUES
  *   - Open an Issue or Pull Request on GitHub (REPO_URL is printed on the cover page).
  *
- * LAST UPDATE: 2025-11-08
  *
  * TECHNICAL HARDENING IN THIS VERSION
  *   - Fonts are session-proofed: titles use SWISSB, all other text uses SWISS (non-bold).
@@ -61,78 +56,54 @@
  *   - Replace REPO_URL to print a clickable reference on the cover page.
  ******************************************************************************************/
 
+
 /* ===============================================================================
-   USER CONFIG - PUBLIC/REPO-RELATIVE PATHS (safe for GitHub)
-   - Works on Windows/Mac/Linux
-   - Auto-detects when opened from the repo; simple overrides if needed
+   USER CONFIG — leave blank unless auto-detect fails.
+   Use ONE PHYSICAL LINE if you set any of these. Backslashes or slashes are fine.
    =============================================================================== */
+%let PROJECT_ROOT=;   /* e.g., %let PROJECT_ROOT=%str(C:\Users\you\Downloads\vdh-chr-evaluation-main); */
+%let IN_CSV_PATH=;    /* e.g., %let IN_CSV_PATH=%str(C:\path\to\repo\data\vdh_chr_survey_synthetic.csv); */
+%let OUT_PDF_PATH=;   /* e.g., %let OUT_PDF_PATH=%str(C:\path\to\repo\reports\vdh_chr_survey_totals.pdf); */
 
-/* Optional override if auto-detect fails (you can uncomment & set this)           */
-/* %let PROJECT_ROOT=C:/Users/you/Downloads/vdh-chr-evaluation-main;               */
-
-/* Optional explicit paths. If you set these, the macro will NOT overwrite them.   */
-/* %let IN_CSV_PATH = C:/path/to/vdh-chr-evaluation/data/vdh_chr_survey_synthetic.csv;   */
-/* %let OUT_PDF_PATH= C:/path/to/vdh-chr-evaluation/reports/vdh_chr_survey_totals.pdf;   */
-
+/* ============================ PATH RESOLUTION ================================= */
 %macro _set_paths;
   %global REPO_ROOT IN_CSV_PATH OUT_PDF_PATH REPO_URL;
+  %let REPO_URL=https://github.com/isaacbmichael/vdh-chr-evaluation;
 
-  /* ----- Determine repo root safely (no warnings if symbols don't exist) ----- */
-  %local ___candidate;
-  %let ___candidate=;
+  /* 1) If user gave PROJECT_ROOT, honor it (keeps native slashes) */
+  %if %length(%superq(PROJECT_ROOT)) %then %let REPO_ROOT=%superq(PROJECT_ROOT);
 
-  /* 1) Explicit override */
-  %if %symexist(PROJECT_ROOT) %then %do;
-    %if %length(%superq(PROJECT_ROOT)) %then %let REPO_ROOT=%superq(PROJECT_ROOT);
-  %end;
-
-  /* 2) Base SAS Enhanced Editor */
+  /* 2) Otherwise, try the path of this .sas file (DMS, EG/Studio, or batch) */
   %if %length(%superq(REPO_ROOT))=0 %then %do;
-    %if %symexist(SAS_EXECFILEPATH) %then %do;
-      %if %length(%superq(SAS_EXECFILEPATH)) %then %let ___candidate=%superq(SAS_EXECFILEPATH);
+    %let __candidate=%sysfunc(coalescec(%superq(SAS_EXECFILEPATH),
+                                        %superq(_SASPROGRAMFILE),
+                                        %sysfunc(getoption(sysin))));
+    %if %length(%superq(__candidate)) %then %do;
+      data _null_;
+        length p dir last $1024;
+        p   = dequote(symget('__candidate'));
+        dir = p; i = findc(p,'/\',-length(p));
+        if i>1 then dir = substr(p,1,i-1);           /* directory of the .sas file */
+        last = upcase(scan(dir,-1,'/\'));
+        if last in ('CODE','SAS') then do;           /* climb one level to repo root */
+          j = findc(dir,'/\',-length(dir));
+          if j>1 then dir = substr(dir,1,j-1);
+        end;
+        call symputx('REPO_ROOT',dir,'g');           /* keep native slashes */
+      run;
     %end;
   %end;
 
-  /* 3) SAS Studio / EG */
-  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate))=0 %then %do;
-    %if %symexist(_SASPROGRAMFILE) %then %do;
-      %if %length(%superq(_SASPROGRAMFILE)) %then %let ___candidate=%superq(_SASPROGRAMFILE);
-    %end;
-  %end;
+  /* 3) Last resort: current working directory */
+  %if %length(%superq(REPO_ROOT))=0 %then %let REPO_ROOT=%sysfunc(pathname(.));
 
-  /* 4) Batch (SYSIN option) */
-  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate))=0 %then %do;
-    %let ___candidate=%sysfunc(getoption(sysin));
-  %end;
+  /* 4) Fill defaults if user didn't provide explicit files */
+  %if %length(%superq(IN_CSV_PATH))=0 %then
+    %let IN_CSV_PATH=&REPO_ROOT./data/vdh_chr_survey_synthetic.csv;
+  %if %length(%superq(OUT_PDF_PATH))=0 %then
+    %let OUT_PDF_PATH=&REPO_ROOT./reports/vdh_chr_survey_totals.pdf;
 
-  /* If we have a candidate path, derive its directory (and climb out of /code or /sas) */
-  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate)) %then %do;
-    data _null_;
-      length p r last $1024;
-      p = dequote(symget('___candidate'));
-      p = translate(p,'/','\');  /* normalize to forward slashes */
-      /* r = directory containing the .sas file */
-      i = findc(p,'/\',-length(p));
-      if i>0 then r = substr(p,1,i-1); else r='.';
-      last = upcase(scan(r,-1,'/\'));
-      if last in ('CODE','SAS') then do;         /* climb one level to repo root */
-        j = findc(r,'/\',-length(r));
-        if j>0 then r = substr(r,1,j-1);
-      end;
-      call symputx('REPO_ROOT', translate(r,'/','\'), 'g');
-    run;
-  %end;
-
-  /* Default if still blank: current working directory */
-  %if %length(%superq(REPO_ROOT))=0 %then %let REPO_ROOT=.;
-
-  /* Defaults (only if user hasn't set them) — matches repo layout */
-  %if not (%symexist(IN_CSV_PATH) and %length(%superq(IN_CSV_PATH))) %then
-    %let IN_CSV_PATH  =&REPO_ROOT./data/vdh_chr_survey_synthetic.csv;
-  %if not (%symexist(OUT_PDF_PATH) and %length(%superq(OUT_PDF_PATH))) %then
-    %let OUT_PDF_PATH =&REPO_ROOT./reports/vdh_chr_survey_totals.pdf;
-
-  /* Ensure ./reports exists */
+  /* 5) Ensure ./reports exists under the repo root */
   data _null_;
     length root rep $512;
     root = symget('REPO_ROOT');
@@ -145,57 +116,40 @@
     rc3 = filename('rep',' ');
   run;
 
-  %let REPO_URL=https://github.com/isaacbmichael/vdh-chr-evaluation;
-
-  /* ----------------------- Fallback: upward search from CWD ----------------------- */
-  %macro _try_upward_search;
-    %local __cwd __found;
+  /* 6) If the CSV isn’t found, search upward from the current dir for /data/... once */
+  %let __rc1 = %sysfunc(filename(_chk,"&IN_CSV_PATH"));
+  %if not %sysfunc(fexist(_chk)) %then %do;
     %let __cwd=%sysfunc(pathname(.));
-    %let __found=0;
     data _null_;
-      length root path $1024;
+      length root $1024;
       root = symget('__cwd');
-      do i=1 to 6 while("&__found"="0");         /* climb up to 6 levels */
-        path = cats(root,'/data/vdh_chr_survey_synthetic.csv');
-        rc = filename('chk',path);
-        if fexist('chk') then do;
+      do i=1 to 6;
+        if fileexist(cats(root,'/data/vdh_chr_survey_synthetic.csv')) then do;
           call symputx('REPO_ROOT',root,'g');
-          call symputx('__found','1','g');
+          call symputx('IN_CSV_PATH',cats(root,'/data/vdh_chr_survey_synthetic.csv'),'g');
+          call symputx('OUT_PDF_PATH',cats(root,'/reports/vdh_chr_survey_totals.pdf'),'g');
+          leave;
         end;
-        rc = filename('chk');
-        if "&__found"="0" then do;               /* climb one level */
-          if indexc(root,'/\') then
-            root = substr(root,1,length(root)-length(scan(root,-1,'/\'))-1);
-          else leave;
-        end;
+        if indexc(root,'/\') then
+          root = substr(root,1,length(root)-length(scan(root,-1,'/\'))-1);
+        else leave;
       end;
     run;
-    %if &__found %then %do;
-      %let IN_CSV_PATH  =&REPO_ROOT./data/vdh_chr_survey_synthetic.csv;
-      %let OUT_PDF_PATH =&REPO_ROOT./reports/vdh_chr_survey_totals.pdf;
-    %end;
-  %mend _try_upward_search;
-
-  /* Guardrail: if missing, try fallback once, then fail fast if still missing */
-  %let __rc1 = %sysfunc(filename(__in,"&IN_CSV_PATH"));
-  %let __exists = %sysfunc(fexist(__in));
-  %let __rc2 = %sysfunc(filename(__in,));
-
-  %if not &__exists %then %do;
-    %_try_upward_search
-    %let __rc3 = %sysfunc(filename(__in2,"&IN_CSV_PATH"));
-    %let __exists2 = %sysfunc(fexist(__in2));
-    %let __rc4 = %sysfunc(filename(__in2,));
-    %if not &__exists2 %then %do;
-      %put ERROR: Input CSV not found at &IN_CSV_PATH ;
-      %put ERROR- Set PROJECT_ROOT to your local clone folder, or set IN_CSV_PATH directly.;
-      %abort cancel;
-    %end;
   %end;
+  %let __rc2 = %sysfunc(filename(_chk));
 
   %put NOTE: REPO_ROOT   = &REPO_ROOT;
   %put NOTE: IN_CSV_PATH = &IN_CSV_PATH;
   %put NOTE: OUT_PDF_PATH= &OUT_PDF_PATH;
+
+  /* Final guardrail */
+  %let __rc3 = %sysfunc(filename(__in,"&IN_CSV_PATH"));
+  %if not %sysfunc(fexist(__in)) %then %do;
+    %put ERROR: Input CSV not found at &IN_CSV_PATH ;
+    %put ERROR- Set PROJECT_ROOT to your local clone folder, or set IN_CSV_PATH directly (one line).;
+    %abort cancel;
+  %end;
+  %let __rc4 = %sysfunc(filename(__in,));
 %mend;
 %_set_paths();
 
@@ -255,10 +209,10 @@ options nodate nonumber pageno=1;
 
 ods _all_ close;
 options orientation=landscape;
-goptions reset=all;                      /* full reset of SAS/GRAPH state */
+goptions reset=all;
 ods pdf file="&OUT_PDF_PATH";
 
-/* SAS/GRAPH device + fonts - titles bold (SWISSB), everything else NORMAL (SWISS) */
+/* SAS/GRAPH device + fonts */
 goptions device=pdf
          hsize=&HSIZE_IN.in vsize=&VSIZE_IN.in
          gunit=cell htext=1
