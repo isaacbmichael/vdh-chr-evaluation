@@ -67,7 +67,7 @@
    - Auto-detects when opened from the repo; simple overrides if needed
    =============================================================================== */
 
-/* Optional override if auto-detect fails (recommended for training labs)          */
+/* Optional override if auto-detect fails (you can uncomment & set this)           */
 /* %let PROJECT_ROOT=C:/Users/you/Downloads/vdh-chr-evaluation-main;               */
 
 /* Optional explicit paths. If you set these, the macro will NOT overwrite them.   */
@@ -77,41 +77,54 @@
 %macro _set_paths;
   %global REPO_ROOT IN_CSV_PATH OUT_PDF_PATH REPO_URL;
 
-  /* 1) Explicit override of repo root */
-  %if %symexist(PROJECT_ROOT) and %length(%superq(PROJECT_ROOT)) %then %do;
-    %let REPO_ROOT=%superq(PROJECT_ROOT);
-  %end;
-  %else %do;
-    /* 2) SAS Studio/EG */
-    %if %symexist(_SASPROGRAMFILE) and %length(%superq(_SASPROGRAMFILE)) %then
-      %let ___candidate=%superq(_SASPROGRAMFILE);
-    /* 3) Base SAS Enhanced Editor */
-    %else %if %symexist(SAS_EXECFILEPATH) and %length(%superq(SAS_EXECFILEPATH)) %then
-      %let ___candidate=%superq(SAS_EXECFILEPATH);
-    /* 4) Batch (SYSIN) */
-    %else %if %length(%superq(SYSIN)) %then
-      %let ___candidate=%superq(SYSIN);
+  /* ----- Determine repo root safely (no warnings if symbols don't exist) ----- */
+  %local ___candidate;
+  %let ___candidate=;
 
-    /* Derive repo root:
-       - start with the directory of this .sas file
-       - if that dir name is CODE or SAS, climb one level to the repo root
-    */
-    %if %length(&___candidate) %then %do;
-      %let ___full=&___candidate;
-      data _null_;
-        length p r last $1024;
-        p = dequote(symget('___full'));
-        p = translate(p,'/','\');                 /* normalize to forward slashes */
-        i = findc(p,'/\',-length(p));
-        r = ifc(i>0, substr(p,1,i-1), '.');       /* dir containing the .sas */
-        last = upcase(scan(r,-1,'/\'));
-        if last in ('CODE','SAS') then            /* climb out of /code or /sas */
-          r = substr(r,1,length(r)-length(scan(r,-1,'/'))-1);
-        call symputx('REPO_ROOT', translate(r,'/','\'), 'g');
-      run;
-    %end;
-    %else %let REPO_ROOT=.;
+  /* 1) Explicit override */
+  %if %symexist(PROJECT_ROOT) %then %do;
+    %if %length(%superq(PROJECT_ROOT)) %then %let REPO_ROOT=%superq(PROJECT_ROOT);
   %end;
+
+  /* 2) Base SAS Enhanced Editor */
+  %if %length(%superq(REPO_ROOT))=0 %then %do;
+    %if %symexist(SAS_EXECFILEPATH) %then %do;
+      %if %length(%superq(SAS_EXECFILEPATH)) %then %let ___candidate=%superq(SAS_EXECFILEPATH);
+    %end;
+  %end;
+
+  /* 3) SAS Studio / EG */
+  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate))=0 %then %do;
+    %if %symexist(_SASPROGRAMFILE) %then %do;
+      %if %length(%superq(_SASPROGRAMFILE)) %then %let ___candidate=%superq(_SASPROGRAMFILE);
+    %end;
+  %end;
+
+  /* 4) Batch (SYSIN option) */
+  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate))=0 %then %do;
+    %let ___candidate=%sysfunc(getoption(sysin));
+  %end;
+
+  /* If we have a candidate path, derive its directory (and climb out of /code or /sas) */
+  %if %length(%superq(REPO_ROOT))=0 and %length(%superq(___candidate)) %then %do;
+    data _null_;
+      length p r last $1024;
+      p = dequote(symget('___candidate'));
+      p = translate(p,'/','\');  /* normalize to forward slashes */
+      /* r = directory containing the .sas file */
+      i = findc(p,'/\',-length(p));
+      if i>0 then r = substr(p,1,i-1); else r='.';
+      last = upcase(scan(r,-1,'/\'));
+      if last in ('CODE','SAS') then do;         /* climb one level to repo root */
+        j = findc(r,'/\',-length(r));
+        if j>0 then r = substr(r,1,j-1);
+      end;
+      call symputx('REPO_ROOT', translate(r,'/','\'), 'g');
+    run;
+  %end;
+
+  /* Default if still blank: current working directory */
+  %if %length(%superq(REPO_ROOT))=0 %then %let REPO_ROOT=.;
 
   /* Defaults (only if user hasn't set them) — matches repo layout */
   %if not (%symexist(IN_CSV_PATH) and %length(%superq(IN_CSV_PATH))) %then
@@ -134,8 +147,7 @@
 
   %let REPO_URL=https://github.com/isaacbmichael/vdh-chr-evaluation;
 
-  /* ----------------------- Fallback: upward search ----------------------- */
-  /* If the CSV isn't where we think it is, walk up from CWD to find it.    */
+  /* ----------------------- Fallback: upward search from CWD ----------------------- */
   %macro _try_upward_search;
     %local __cwd __found;
     %let __cwd=%sysfunc(pathname(.));
