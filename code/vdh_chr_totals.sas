@@ -1,6 +1,6 @@
 /*****************************************************************************************
  * Virginia Department of Health - CHR Survey Analysis
- * Public Example Package (Synthetic Data) - PDF + SAS/GRAPH Output
+ * Public Example Package (Synthetic Data) - PDF and SAS/GRAPH Output
  *-----------------------------------------------------------------------------------------
  * AUTHOR:    Isaac B. Michael, PhD, MS, MApSt
  * CREATED:   2024-10-20  REVISED:   2025-11-08
@@ -13,54 +13,67 @@
  *   included in this package or its outputs.
  *
  * WHAT YOU GET
- *   - A single SAS program that renders an executive-friendly PDF with crisp text/graphics.
+ *   - One SAS program that renders an executive-friendly PDF with crisp text and graphics.
  *   - Demographic pies, program reach charts, and 20 question-by-demographic bar charts.
  *   - A cover page explaining provenance, timeframe, and licensing.
  *
- * QUICK START (recommended)
- *   1) Download ZIP Ã¢â€ â€™ Extract All Ã¢â€ â€™ open code/vdh_chr_totals.sas in SAS 9.4 (w/ SAS/GRAPH).
- *   2) Run. It auto-detects the repo path and creates ./reports if needed.
- *   3) If auto-detect fails, set ONE thing (on a single line):
- *        %let PROJECT_ROOT=%str(C:\Users\you\Downloads\vdh-chr-evaluation-main);
- *      (Windows backslashes OR forward slashes are both OK.)
+ * QUICK START (manual paths - recommended)
+ *   1) Download ZIP -> Extract All -> open code/vdh_chr_totals.sas in SAS 9.4 (with SAS/GRAPH).
+ *   2) In the section "USER CONFIG", set BOTH lines (each on a single line):
+ *        %let IN_CSV_PATH=C:\path\to\vdh_chr_survey_synthetic.csv;
+ *        %let OUT_PDF_PATH=C:\path\to\reports\vdh_chr_survey_totals.pdf;
+ *      Windows backslashes or forward slashes are both OK. Do not add quotes.
+ *   3) Run the program. The PDF is written to OUT_PDF_PATH. The "reports" folder will be
+ *      created if needed.
  *
  * IF YOU SEE "Input CSV not found"
- *   Option A (simple): set PROJECT_ROOT as above.
- *   Option B (explicit): set IN_CSV_PATH and OUT_PDF_PATH yourself (single line each).
+ *   - Check that IN_CSV_PATH points to an existing CSV.
+ *   - Paths with spaces are OK. Avoid % or & in folder names.
+ *   - Optional: instead of the two lines above, you may set one root folder:
+ *        %let PROJECT_ROOT=%str(C:\Users\you\Downloads\vdh-chr-evaluation-main);
+ *     If PROJECT_ROOT is set, the program will derive both paths automatically.
  *
  * DATA NOTES
  *   - The included CSV (or your own) should follow the column schema expected below.
  *   - If you replace the synthetic CSV with real data, ensure approvals and privacy
- *     protections are satisfied. This script is privacy-safe; publishing real results may require review.
+ *     protections are satisfied. Publishing real results may require review.
  *
- * LICENSING (GitHub-ready)
- *   - Code: MIT License (c) 2025 Isaac B. Michael. See LICENSE (MIT) in repo.
- *   - Reports & Documentation: Creative Commons Attribution 4.0 (CC BY 4.0).
- *   - Attribution requested: "Isaac B. Michael" with a link to both licenses.
+ * LICENSING
+ *   - Code: MIT License (c) 2025 Isaac B. Michael.
+ *   - Reports and Documentation: Creative Commons Attribution 4.0 (CC BY 4.0).
+ *   - Please credit "Isaac B. Michael" and include links to both licenses.
  *
  * CONTRIBUTING / ISSUES
- *   - Open an Issue or Pull Request on GitHub (REPO_URL is printed on the cover page).
+ *   - Open an Issue or Pull Request on GitHub. The repository URL is printed on the cover page.
  *
- *
- * TECHNICAL HARDENING IN THIS VERSION
- *   - Fonts are session-proofed: titles use SWISSB, all other text uses SWISS (non-bold).
- *     We explicitly: goptions reset=all, ftitle=swissb ftext=swiss, and set font=swiss on
- *     AXIS/LEGEND/annotate LABELs to prevent "bold creep" on second runs.
- *   - Vector PDF output for crisp text/lines (device=PDF + ODS PDF).
- *   - Safe arrays: all Q* variables coerced to character before mapping/labeling.
- *   - Cover page: increased title/subtitle spacing while keeping everything on one page.
+ * TECHNICAL NOTES IN THIS VERSION
+ *   - Fonts are session-proofed: titles use SWISSB; all other text uses SWISS (non-bold).
+ *     We call: goptions reset=all, ftitle=swissb, ftext=swiss; and set font=swiss on
+ *     AXIS/LEGEND/annotate LABELs to prevent bold creep on later runs.
+ *   - Vector PDF output for crisp text and lines (device=PDF with ODS PDF).
+ *   - Safe arrays: all Q* variables are coerced to character before mapping and labeling.
+ *   - Cover page spacing tuned to keep everything on one page.
  *
  * HOW TO CUSTOMIZE
- *   - Change legend placement via LEG_* macros, adjust annotation box via NOTE_* and ANNO_*.
+ *   - Change legend placement via LEG_* macros; adjust annotation box via NOTE_* and ANNO_*.
  *   - Set SHOW_INSIDE_LABELS=0 to hide counts inside bars.
  *   - Replace REPO_URL to print a clickable reference on the cover page.
  ******************************************************************************************/
 
 /* ===============================================================================
-   USER CONFIG : leave blank unless auto-detect fails (keep each on ONE line).
+   USER CONFIG: set BOTH absolute paths below (each on ONE line). These are the only
+   manual edits most users need. If you prefer auto-detect, set PROJECT_ROOT instead.
    =============================================================================== */
-%let IN_CSV_PATH=;
+
+%let IN_CSV_PATH=; 
 %let OUT_PDF_PATH=;
+
+/* ===============================================================================
+   STYLE DEFAULTS - NO USER ACTION NEEDED
+   -------------------------------------------------------------------------------
+   These settings keep the charts and text consistent with prior reports.
+   Most users can ignore this section.
+   =============================================================================== */
 
 /* Axis/label style (keep your x-axis angle) */
 %let XAXIS_ANGLE   = 330;   /* slight clockwise, reads down left-to-right */
