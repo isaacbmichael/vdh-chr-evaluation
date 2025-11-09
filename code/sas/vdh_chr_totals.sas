@@ -1,6 +1,6 @@
 /*****************************************************************************************
- * Virginia Department of Health ñ CHR Survey Analysis
- * Public Example Package (Synthetic Data) ó PDF + SAS/GRAPH Output
+ * Virginia Department of Health ‚Äì CHR Survey Analysis
+ * Public Example Package (Synthetic Data) ‚Äî PDF + SAS/GRAPH Output
  *-----------------------------------------------------------------------------------------
  * AUTHOR:    Isaac B. Michael, PhD, MS, MApSt
  * CREATED:   2024-10-20        
@@ -8,15 +8,15 @@
  *
  * PURPOSE
  *   This repository contains a reproducible SAS program that mirrors the structure and
- *   analyses used in the Comprehensive Harm Reduction (CHR) programís actual report.
+ *   analyses used in the Comprehensive Harm Reduction (CHR) program‚Äôs actual report.
  *   To protect privacy, every figure and statistic in the public PDF is generated from a
  *   SYNTHETIC dataset that mimics realistic distributions. No real survey responses are
  *   included in this package or its outputs.
  *
  * WHAT YOU GET
- *   ï A single SAS program that renders an executive-friendly PDF with crisp text/graphics.
- *   ï Demographic pies, program reach charts, and 20 question-by-demographic bar charts.
- *   ï A cover page explaining provenance, timeframe, and licensing.
+ *   ‚Ä¢ A single SAS program that renders an executive-friendly PDF with crisp text/graphics.
+ *   ‚Ä¢ Demographic pies, program reach charts, and 20 question-by-demographic bar charts.
+ *   ‚Ä¢ A cover page explaining provenance, timeframe, and licensing.
  *
  * QUICK START (GitHub)
  *   1) Clone/download this repo.
@@ -25,51 +25,117 @@
  *   4) Run the entire program. A vector PDF will be produced with crisp, non-fuzzy text.
  *
  * DATA NOTES
- *   ï The included CSV (or your own) should follow the column schema expected below.
- *   ï If you replace the synthetic CSV with real data, ensure all approvals and privacy
+ *   ‚Ä¢ The included CSV (or your own) should follow the column schema expected below.
+ *   ‚Ä¢ If you replace the synthetic CSV with real data, ensure all approvals and privacy
  *     protections are satisfied. This script is designed to be privacy-safe, publishing
  *     real results may require review.
  *
  * LICENSING (GitHub-ready)
- *   ï Code: MIT License © 2025 Isaac B. Michael. See LICENSE (MIT) in repo.
- *   ï Reports & Documentation: Creative Commons Attribution 4.0 (CC BY 4.0).
- *   ï Attribution requested: ìIsaac B. Michaelî with a link to both licenses.
+ *   ‚Ä¢ Code: MIT License ¬© 2025 Isaac B. Michael. See LICENSE (MIT) in repo.
+ *   ‚Ä¢ Reports & Documentation: Creative Commons Attribution 4.0 (CC BY 4.0).
+ *   ‚Ä¢ Attribution requested: ‚ÄúIsaac B. Michael‚Äù with a link to both licenses.
  *
  * CONTRIBUTING / ISSUES
- *   ï Open an Issue or Pull Request on GitHub (set REPO_URL below if you want it on the PDF).
+ *   ‚Ä¢ Open an Issue or Pull Request on GitHub (set REPO_URL below if you want it on the PDF).
  *
  * LAST UPDATE: 2025-11-08
  *
  * TECHNICAL HARDENING IN THIS VERSION
- *   ï Fonts are session-proofed: titles use SWISSB, all other text uses SWISS (non-bold).
+ *   ‚Ä¢ Fonts are session-proofed: titles use SWISSB, all other text uses SWISS (non-bold).
  *     We explicitly: goptions reset=all, ftitle=swissb ftext=swiss, and set font=swiss on
- *     AXIS/LEGEND/annotate LABELs to prevent ìbold creepî on second runs.
- *   ï Vector PDF output for crisp text/lines (device=PDF + ODS PDF).
- *   ï Safe arrays: all Q* variables coerced to character before mapping/labeling.
- *   ï Cover page: increased title/subtitle spacing while keeping everything on one page.
+ *     AXIS/LEGEND/annotate LABELs to prevent ‚Äúbold creep‚Äù on second runs.
+ *   ‚Ä¢ Vector PDF output for crisp text/lines (device=PDF + ODS PDF).
+ *   ‚Ä¢ Safe arrays: all Q* variables coerced to character before mapping/labeling.
+ *   ‚Ä¢ Cover page: increased title/subtitle spacing while keeping everything on one page.
  *
  * HOW TO CUSTOMIZE
- *   ï Change legend placement via LEG_* macros, adjust annotation box via NOTE_* and ANNO_*.
- *   ï Set SHOW_INSIDE_LABELS=0 to hide counts inside bars.
- *   ï Replace REPO_URL to print a clickable reference on the cover page.
+ *   ‚Ä¢ Change legend placement via LEG_* macros, adjust annotation box via NOTE_* and ANNO_*.
+ *   ‚Ä¢ Set SHOW_INSIDE_LABELS=0 to hide counts inside bars.
+ *   ‚Ä¢ Replace REPO_URL to print a clickable reference on the cover page.
  *
  ******************************************************************************************/
 
 /*===============================================================================
-= USER CONFIG (edit these for your environment)
+= USER CONFIG ‚Äî PUBLIC/REPO-RELATIVE PATHS (safe for GitHub)
+   - Works on Windows/Mac/Linux
+   - Users can optionally set PROJECT_ROOT to override
 ===============================================================================*/
-%let IN_CSV_PATH  = G:\My Drive\Technical Projects\SAS\vdh-chr-evaluation\data\synthetic\vdh_chr_survey_synthetic.csv;
-%let OUT_PDF_PATH = G:\My Drive\Technical Projects\SAS\vdh-chr-evaluation\reports\vdh_chr_survey_totals.pdf;
 
-/* Optional: add your repo URL so the cover page prints it (leave blank to omit) */
-%let REPO_URL     = ;  /* e.g., https://github.com/isaac-b-michael/vdh-chr-public */
+/* Optional override: uncomment and set if you didn't open the .sas from the repo */
+/* %let PROJECT_ROOT=/path/to/vdh-chr-public; */
+
+%macro _set_paths;
+  %global REPO_ROOT IN_CSV_PATH OUT_PDF_PATH REPO_URL;
+
+  /* 1) Respect explicit override if provided */
+  %if %symexist(PROJECT_ROOT) and %length(%superq(PROJECT_ROOT)) %then %do;
+    %let REPO_ROOT=%superq(PROJECT_ROOT);
+  %end;
+  /* 2) Use editor-provided full path (SAS Studio/EG) when available */
+  %else %if %symexist(SAS_EXECFILEPATH) and %length(%superq(SAS_EXECFILEPATH)) %then %do;
+    %let ___full=%superq(SAS_EXECFILEPATH);
+    data _null_;
+      length p d $512;
+      p = symget('___full');
+      /* position of last slash/backslash */
+      i = findc(p,'/\',-length(p));
+      if i>0 then d = substr(p,1,i-1);
+      else d='.';
+      call symputx('REPO_ROOT', d, 'g');
+    run;
+  %end;
+  /* 3) Fallback to -SYSIN (batch runs) */
+  %else %if %length(%superq(SYSIN)) %then %do;
+    %let ___full=%superq(SYSIN);
+    data _null_;
+      length p d $512;
+      p = symget('___full');
+      i = findc(p,'/\',-length(p));
+      if i>0 then d = substr(p,1,i-1);
+      else d='.';
+      call symputx('REPO_ROOT', d, 'g');
+    run;
+  %end;
+  /* 4) Last resort: current working directory */
+  %else %let REPO_ROOT=.;
+
+  /* Normalize backslashes to forward slashes for portability */
+  %let REPO_ROOT=%sysfunc(translate(%superq(REPO_ROOT),%str(/),%str(\)));
+
+  /* Repo-relative input/output paths */
+  %let IN_CSV_PATH  =&REPO_ROOT./data/synthetic/vdh_chr_survey_synthetic.csv;
+  %let OUT_PDF_PATH =&REPO_ROOT./reports/vdh_chr_survey_totals.pdf;
+
+  /* Ensure ./reports exists (create if missing) */
+  data _null_;
+    length root rep $512;
+    root = symget('REPO_ROOT');
+    rep  = cats(root,'/reports');
+    rc   = filename('rep', rep);
+    did  = dopen('rep');
+    if did=0 then do;
+      _rc = dcreate('reports', root);
+    end;
+    else _rc = did;
+    if did>0 then rc2 = dclose(did);
+    rc3 = filename('rep',' ');
+  run;
+
+  /* Optional: set the public repository URL for the cover page */
+  %let REPO_URL=https://github.com/isaac-b-michael/vdh-chr-public;
+
+  %put NOTE: REPO_ROOT   = &REPO_ROOT;
+  %put NOTE: IN_CSV_PATH = &IN_CSV_PATH;
+  %put NOTE: OUT_PDF_PATH= &OUT_PDF_PATH;
+%mend;
+%_set_paths();
 
 /* Axis/label style (KEEP your x-axis angle) */
-%let XAXIS_ANGLE   = 330;   /* slight clockwise, reads down left?right */
+%let XAXIS_ANGLE   = 330;   /* slight clockwise, reads down left‚Üíright */
 %let XAXIS_H       = 1.0;   /* x-axis tick label size (cell units)     */
 %let XAXIS_OFFSET  = 4;     /* reduce overlap warnings                  */
 
-/* Unified text sizing (cell units) ó same visual size, just crisper */
+/* Unified text sizing (cell units) ‚Äî same visual size, just crisper */
 %let TITLE_H       = 1.75;  /* chart titles (not the cover page)       */
 %let LEGEND_H      = 1.2;
 %let YTICK_H       = 1.0;
@@ -77,7 +143,7 @@
 %let ANNO_NOTE_H   = 1.0;
 %let ANNO_BIG_H    = 2.0;
 
-/* Canvas size ó match prior style */
+/* Canvas size ‚Äî match prior style */
 %let HSIZE_IN      = 9;
 %let VSIZE_IN      = 6;
 
@@ -90,7 +156,7 @@
 %let LEG_BAR_OFF_X    = 0;
 %let LEG_BAR_OFF_Y    = 0;
 
-/* Pies (PIE3D) ó prior style at bottom center, single column */
+/* Pies (PIE3D) ‚Äî prior style at bottom center, single column */
 %let LEG_PIE_POS      = (bottom center);
 %let LEG_PIE_OFF_X    = 0;
 %let LEG_PIE_OFF_Y    = 0;
@@ -124,14 +190,14 @@ options orientation=landscape;
 goptions reset=all;                      /* FULL reset of SAS/GRAPH state */
 ods pdf file="&OUT_PDF_PATH";
 
-/* SAS/GRAPH device + fonts ó titles bold (SWISSB), everything else NORMAL (SWISS) */
+/* SAS/GRAPH device + fonts ‚Äî titles bold (SWISSB), everything else NORMAL (SWISS) */
 goptions device=pdf
          hsize=&HSIZE_IN.in vsize=&VSIZE_IN.in
          gunit=cell htext=1
          ftitle=swissb ftext=swiss
          cback=white;
 
-/* Helper for consistent chart title style (heightò1.75 per prior style) */
+/* Helper for consistent chart title style (height‚âà1.75 per prior style) */
 %macro bigtitle(text);
   title1 f=swissb h=&TITLE_H "&text";
 %mend;
@@ -263,9 +329,9 @@ data work.vdh_chr_data1;
 run;
 
 /*===============================================================================
-= COVER PAGE (executive-friendly) ó airy title/subtitle, still fits on one page
+= COVER PAGE (executive-friendly) ‚Äî airy title/subtitle, still fits on one page
   - Increased title/subtitle font sizes + extra spacer rows.
-  - Adds plain-English provenance: ìBased on actual reportÖ synthetic dataset.î
+  - Adds plain-English provenance: ‚ÄúBased on actual report‚Ä¶ synthetic dataset.‚Äù
   - Prints Created/Revised dates and optional GitHub URL.
 ===============================================================================*/
 %let today_word = %sysfunc(date(), worddate.);
@@ -282,7 +348,7 @@ data title_page;
 
   A=" ";                                              output;  /* space before subtitle */
 
-  A="Survey Analysis ó Updated Program for Public Release"; output;
+  A="Survey Analysis ‚Äî Updated Program for Public Release"; output;
 
   A=" ";                                              output;  /* generous spacing */
   A="&today_word";                                    output;
@@ -290,14 +356,12 @@ data title_page;
   A=" ";                                              output;  /* spacer */
 
   A="Summary:";                                       output;
-  A="This example mirrors the CHR programís report structure, variable harmonization,"; output;
-  A="and analysis logic for totals and subgroup charts. All results are generated from"; output;
-  A="a fully SYNTHETIC dataset that imitates realistic distributionsóno real responses."; output;
+  A="This example mirrors the CHR program‚Äôs report structure, variable harmonization, and analysis logic for totals and subgroup charts. All results are generated from a fully SYNTHETIC dataset that imitates realistic distributions‚Äîno real responses."; output;
 
   A=" ";                                              output;
 
   A="Timeframe Covered by the Synthetic Example:";    output;
-  A="January 1, 2018 ñ May 31, 2024 (illustrative)";  output;
+  A="January 1, 2018 ‚Äì May 31, 2024 (illustrative)";  output;
 
   A=" ";                                              output;
 
@@ -309,8 +373,8 @@ data title_page;
   A=" ";                                              output;
 
   A="Licensing:";                                     output;
-  A="ï Code: MIT License © 2025 Isaac B. Michael";    output;
-  A="ï Reports & Documentation: Creative Commons Attribution 4.0 (CC BY 4.0)"; output;
+  A="‚Ä¢ Code: MIT License ¬© 2025 Isaac B. Michael";    output;
+  A="‚Ä¢ Reports & Documentation: Creative Commons Attribution 4.0 (CC BY 4.0)"; output;
 
   A=" ";                                              output;
 
@@ -328,27 +392,31 @@ data title_page;
   A=" ";                                              output;  /* trailing spacer to avoid page break jitter */
 run;
 
+options orientation=landscape
+        papersize=letter
+        leftmargin=0.75in rightmargin=0.75in
+        topmargin=0.75in  bottommargin=0.75in;
+
 title; footnote;
 ods pdf startpage=no;
 proc report data=title_page nowd noheader
-  style(report)={frame=void rules=none cellspacing=0 cellpadding=6 cellwidth=100%} /* extra vertical whitespace */
-;
-  column A;
-  define A / display center width=120 flow;
+  style(report)=[frame=void rules=none cellpadding=6 cellspacing=0 outputwidth=9in];
+  columns A;
+  define A / display flow
+             style(column)=[cellwidth=9in just=l];  /* removed asis=on */  
   compute A;
     if A="Virginia Department of Health" then
       call define(_col_,"style","style={font_size=20pt font_weight=bold just=center}");
     else if A="Comprehensive Harm Reduction (CHR) Program" then
       call define(_col_,"style","style={font_size=18pt font_weight=bold just=center}");
-    else if A="Survey Analysis ó Updated Program for Public Release" then
-      call define(_col_,"style","style={font_size=15pt just=center}");  /* bigger subtitle */
+    else if A="Survey Analysis ‚Äî Updated Program for Public Release" then
+      call define(_col_,"style","style={font_size=15pt just=center}");
     else if A="&today_word" then
       call define(_col_,"style","style={font_size=12pt just=center}");
-    else if A in ("Summary:","How this PDF is organized:","Licensing:","Attribution & Contact:",
-                  "Timeframe Covered by the Synthetic Example:") then
+    else if A in ("Summary:","How this PDF is organized:","Licensing:",
+                  "Attribution & Contact:","Timeframe Covered by the Synthetic Example:") then
       call define(_col_,"style","style={font_size=12pt font_weight=bold just=left}");
-    else
-      call define(_col_,"style","style={font_size=11pt just=left}");
+    else call define(_col_,"style","style={font_size=11pt just=left}");
   endcomp;
 run;
 ods pdf startpage=yes;
@@ -506,7 +574,7 @@ proc gchart data=work.vdh_chr_data1;
 run; quit;
 
 /*===============================================================================
-= ìHow respondents heard about CHRî ó overall + by demographic
+= ‚ÄúHow respondents heard about CHR‚Äù ‚Äî overall + by demographic
 ===============================================================================*/
 data hear_harm_long;
   set work.vdh_chr_data1;
@@ -523,7 +591,7 @@ run;
 /* helper: include INSIDE=FREQ only when toggled */
 %macro _inside_freq; %if &SHOW_INSIDE_LABELS %then inside=freq; %mend;
 
-/* Small note box ó lock font to SWISS so it never inherits bold */
+/* Small note box ‚Äî lock font to SWISS so it never inherits bold */
 %macro _note_box(dsname);
   data &dsname;
     length function $8 text $96 style $12; retain xsys ysys '3';
@@ -590,7 +658,7 @@ axis1 label=(font=swiss height=&YLABEL_H "Percent")
 %heard_chart(age_group,       Age);
 
 /*===============================================================================
-= LABEL MAPPINGS FOR QUESTIONS (all Q* are character now ó safe arrays)
+= LABEL MAPPINGS FOR QUESTIONS (all Q* are character now ‚Äî safe arrays)
 ===============================================================================*/
 data work.vdh_chr_data1;
   set work.vdh_chr_data1;
@@ -706,7 +774,7 @@ run;
 %mend;
 
 /*===============================================================================
-= BAR CHARTS FOR ALL 20 QUESTIONS ó OVERALL + BY DEMOGRAPHIC
+= BAR CHARTS FOR ALL 20 QUESTIONS ‚Äî OVERALL + BY DEMOGRAPHIC
 ===============================================================================*/
 axis1 label=(font=swiss height=&YLABEL_H "Percent")
       order=(0 to 100 by 10)
