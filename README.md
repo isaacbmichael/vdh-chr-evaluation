@@ -10,8 +10,8 @@
 
 ## ✨ What this public example includes
 
-- `data/synthetic/vdh_chr_survey_synthetic.csv` — **synthetic** dataset that mimics the structure and distributions of the original client survey.  
-- `code/sas/vdh_chr_totals.sas` — a single, reproducible SAS program that produces an executive-friendly **vector PDF** with demographics, program reach, and 20 question-by-demographic charts.  
+- `data/vdh_chr_survey_synthetic.csv` — **synthetic** dataset that mimics the structure and distributions of the original client survey.  
+- `code/vdh_chr_totals.sas` — a single, reproducible SAS program that produces an executive-friendly **vector PDF** with demographics, program reach, and 20 question-by-demographic charts.  
 - `reports/vdh_chr_survey_totals.pdf` — sample output generated from the synthetic dataset.
 
 **Why synthetic?** Every figure and statistic in the sample PDF is generated from synthetic data only. No real survey responses or client-confidential information are included.
@@ -51,9 +51,10 @@
 
 ## 📂 Repository contents
 
-- `code/sas/` — SAS program(s)  
+- `code/` — SAS program(s)  
   - `vdh_chr_totals.sas` — program-wide Totals analysis and charts
-- `data/synthetic/` — fabricated demo dataset (no PHI/PII)  
+- `data/` — fabricated demo dataset (no PHI/PII)  
+  - `dictionary.csv`
   - `vdh_chr_survey_synthetic.csv`
 - `reports/` — sample outputs  
   - `vdh_chr_survey_totals.pdf`
