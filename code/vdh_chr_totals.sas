@@ -29,7 +29,7 @@
  *
  *   Option B (explicit): set IN_CSV_PATH and OUT_PDF_PATH yourself. The macro will not
  *   overwrite them if already defined.
- *     %let IN_CSV_PATH=/Users/you/path/to/vdh-chr-evaluation/data/synthetic/vdh_chr_survey_synthetic.csv;
+ *     %let IN_CSV_PATH=/Users/you/path/to/vdh-chr-evaluation/data/vdh_chr_survey_synthetic.csv;
  *     %let OUT_PDF_PATH=/Users/you/path/to/vdh-chr-evaluation/reports/vdh_chr_survey_totals.pdf;
  *
  * DATA NOTES
@@ -67,12 +67,12 @@
    - Auto-detects when opened from the repo; simple overrides if needed
    =============================================================================== */
 
-/* Optional override if auto-detect fails */
- /* %let PROJECT_ROOT=/path/to/local/clone/of/vdh-chr-evaluation; */
+/* Optional override if auto-detect fails (recommended for training labs)          */
+/* %let PROJECT_ROOT=C:/Users/you/Downloads/vdh-chr-evaluation-main;               */
 
-/* Optional explicit paths. If you set these, the macro will NOT overwrite them. */
- /* %let IN_CSV_PATH=/absolute/or/relative/path/to/vdh_chr_survey_synthetic.csv;   */
- /* %let OUT_PDF_PATH=/absolute/or/relative/path/to/vdh_chr_survey_totals.pdf;     */
+/* Optional explicit paths. If you set these, the macro will NOT overwrite them.   */
+/* %let IN_CSV_PATH = C:/path/to/vdh-chr-evaluation/data/vdh_chr_survey_synthetic.csv;   */
+/* %let OUT_PDF_PATH= C:/path/to/vdh-chr-evaluation/reports/vdh_chr_survey_totals.pdf;   */
 
 %macro _set_paths;
   %global REPO_ROOT IN_CSV_PATH OUT_PDF_PATH REPO_URL;
@@ -113,7 +113,7 @@
     %else %let REPO_ROOT=.;
   %end;
 
-  /* Defaults (only if user hasn't set them) — matches your repo layout */
+  /* Defaults (only if user hasn't set them) — matches repo layout */
   %if not (%symexist(IN_CSV_PATH) and %length(%superq(IN_CSV_PATH))) %then
     %let IN_CSV_PATH  =&REPO_ROOT./data/vdh_chr_survey_synthetic.csv;
   %if not (%symexist(OUT_PDF_PATH) and %length(%superq(OUT_PDF_PATH))) %then
@@ -134,20 +134,56 @@
 
   %let REPO_URL=https://github.com/isaacbmichael/vdh-chr-evaluation;
 
-  /* Guardrail: fail fast if the CSV is missing */
+  /* ----------------------- Fallback: upward search ----------------------- */
+  /* If the CSV isn't where we think it is, walk up from CWD to find it.    */
+  %macro _try_upward_search;
+    %local __cwd __found;
+    %let __cwd=%sysfunc(pathname(.));
+    %let __found=0;
+    data _null_;
+      length root path $1024;
+      root = symget('__cwd');
+      do i=1 to 6 while("&__found"="0");         /* climb up to 6 levels */
+        path = cats(root,'/data/vdh_chr_survey_synthetic.csv');
+        rc = filename('chk',path);
+        if fexist('chk') then do;
+          call symputx('REPO_ROOT',root,'g');
+          call symputx('__found','1','g');
+        end;
+        rc = filename('chk');
+        if "&__found"="0" then do;               /* climb one level */
+          if indexc(root,'/\') then
+            root = substr(root,1,length(root)-length(scan(root,-1,'/\'))-1);
+          else leave;
+        end;
+      end;
+    run;
+    %if &__found %then %do;
+      %let IN_CSV_PATH  =&REPO_ROOT./data/vdh_chr_survey_synthetic.csv;
+      %let OUT_PDF_PATH =&REPO_ROOT./reports/vdh_chr_survey_totals.pdf;
+    %end;
+  %mend _try_upward_search;
+
+  /* Guardrail: if missing, try fallback once, then fail fast if still missing */
   %let __rc1 = %sysfunc(filename(__in,"&IN_CSV_PATH"));
   %let __exists = %sysfunc(fexist(__in));
   %let __rc2 = %sysfunc(filename(__in,));
 
+  %if not &__exists %then %do;
+    %_try_upward_search
+    %let __rc3 = %sysfunc(filename(__in2,"&IN_CSV_PATH"));
+    %let __exists2 = %sysfunc(fexist(__in2));
+    %let __rc4 = %sysfunc(filename(__in2,));
+    %if not &__exists2 %then %do;
+      %put ERROR: Input CSV not found at &IN_CSV_PATH ;
+      %put ERROR- Set PROJECT_ROOT to your local clone folder, or set IN_CSV_PATH directly.;
+      %abort cancel;
+    %end;
+  %end;
+
   %put NOTE: REPO_ROOT   = &REPO_ROOT;
   %put NOTE: IN_CSV_PATH = &IN_CSV_PATH;
   %put NOTE: OUT_PDF_PATH= &OUT_PDF_PATH;
-
-  %if not &__exists %then %do;
-    %put ERROR: Input CSV not found at &IN_CSV_PATH ;
-    %put ERROR- Set PROJECT_ROOT to your local clone folder, or set IN_CSV_PATH directly. ;
-    %abort cancel;
-  %end;
 %mend;
 %_set_paths();
 
