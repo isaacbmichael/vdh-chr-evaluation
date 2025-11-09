@@ -101,6 +101,4 @@ This repository is for educational and demonstration purposes related to public-
 
 ---
 
-## 📮 Contact
-
 © 2025 Isaac B. Michael • [Email](mailto:isaac.b.michael@gmail.com) • [LinkedIn](https://www.linkedin.com/in/isaacbmichael) • [GitHub](https://github.com/isaacbmichael)
