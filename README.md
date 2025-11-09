@@ -1,96 +1,92 @@
 # Virginia CHR Client Survey — Evaluation (Oct 2024)
 
-> A lightweight, reproducible public-health evaluation using **SAS automation** to clean, standardize, and report on Virginia’s **Comprehensive Harm Reduction (CHR)** client survey. Includes program-wide **Totals** and stratified **Subgroups** reports, a variable dictionary, and **synthetic demo data**—all published with permission and **no PHI/PII**.
+> A lightweight, reproducible public-health evaluation using **SAS/GRAPH automation** to clean, standardize, and report on Virginia’s **Comprehensive Harm Reduction (CHR)** client survey.  
+> This public example ships with **synthetic data**, a single example **SAS program**, and a sample **PDF report**—all privacy-safe with **no PHI/PII**.
 
 > **Repository:** https://github.com/isaacbmichael/vdh-chr-evaluation  
-> This repo is a neutral demo for portfolio/teaching purposes and is **not an official VDH system**.
+> This repository is a neutral demo for portfolio/teaching purposes and is **not an official VDH system**.
 
 ---
 
-## ✨ Features
-- **Automated SAS pipeline** (one-command build) for Totals + Subgroups.  
-- **Standardized data model:** harmonized site/region, typed variables, labels, and recodes.  
-- **Quality checks:** missingness scans, type/label validation, and cross-tab diagnostics.  
-- **Reusable outputs:** leadership-ready PDFs and CSV exports.  
-- **Synthetic data:** structurally faithful example dataset for safe reuse.  
-- **Dual licensing:** **MIT** (code) and **CC BY 4.0** (reports & figures).
+## ✨ What this public example includes
 
-### Components
-- `code/sas/01_totals.sas` — program-wide **Totals** analysis (imports data, derives fields, labels, and builds tables/charts; writes the Totals PDF).  
-- `code/sas/02_subgroups.sas` — **Subgroups** comparisons (demographics and site/region; writes the Subgroups PDF).  
-- `code/sas/run_all.sas` — top-level orchestrator (sets paths/switches and runs both scripts).  
+- `data/synthetic/vdh_chr_survey_synthetic.csv` — **synthetic** dataset that mimics the structure and distributions of the original client survey.  
+- `code/sas/vdh_chr_totals.sas` — a single, reproducible SAS program that produces an executive-friendly **vector PDF** with demographics, program reach, and 20 question-by-demographic charts.  
+- `reports/vdh_chr_survey_totals.pdf` — sample output generated from the synthetic dataset.
 
-> Note: This project **does not** use custom `PROC FORMAT` catalogs. Labels/recodes are created inside data steps.
+**Why synthetic?** Every figure and statistic in the sample PDF is generated from synthetic data only. No real survey responses or client-confidential information are included.
+
+**Licensing (unchanged):** **MIT** for code and **CC BY 4.0** for reports/documentation.
 
 ---
 
-## 📌 Latest Highlights · 2025-11-07
-- Public release of the **VDH CHR Evaluation** repo (MIT + CC BY 4.0).  
-- Added **synthetic demo data** and a variable dictionary for reproducibility.  
-- Archived the final **Totals** and **Subgroups** PDFs from the Oct 2024 delivery.
+## 📌 Latest highlights · 2025-11-08
+
+- Public example simplified around a single program: `vdh_chr_totals.sas`.  
+- Fonts **session-proofed** (SWISSB titles; SWISS body) with `goptions reset=all` to prevent bold/size drift between runs.  
+- Clear, one-page cover with provenance, timeframe, and licensing.  
+- Macro-controlled styling for consistent axes, legends, titles, and annotation callouts.
 
 ---
 
-## 🚀 Quick Start
-No special tooling beyond SAS is required.
+## 🚀 Quick start
 
-    # Clone
-    git clone https://github.com/isaacbmichael/vdh-chr-evaluation.git
-    cd vdh-chr-evaluation
+1. **Clone** the repository:
 
-    /* From SAS: run the full build (uses synthetic data by default) */
-    %include "code/sas/run_all.sas";
+   `git clone https://github.com/isaacbmichael/vdh-chr-evaluation.git`  
+   `cd vdh-chr-evaluation`
 
-**Outputs appear under:**
-- `reports/` — PDF reports  
-- `data/derived/` — CSV summaries
+2. **Open** `code/sas/vdh_chr_totals.sas` in **SAS 9.4** (SAS/GRAPH required; tested on 9.4M7).
+
+3. In the **USER CONFIG** section of the program, set:
+   - `IN_CSV_PATH` → path to the synthetic CSV (or your own file with the same schema)  
+   - `OUT_PDF_PATH` → where to save the output PDF  
+   - optional `REPO_URL` → prints a clickable repo link on the cover page
+
+4. **Run** the entire program. The output will be a crisp, vector PDF at the path you specified.
+
+**Outputs appear under:** `reports/`
 
 ---
 
-## 📂 Repository Contents
-- `code/sas/` — SAS programs:
-  - `01_totals.sas` — program-wide Totals analysis.
-  - `02_subgroups.sas` — subgroup comparisons.
-  - `run_all.sas` — build orchestrator (paths + switches).
-- `data/synthetic/` — **fabricated** demo dataset (no PHI/PII).
-- `data/dictionary.csv` — variable names, labels, types, and valid values.
-- `reports/` — final PDFs:
+## 📂 Repository contents
+
+- `code/sas/` — SAS program(s)  
+  - `vdh_chr_totals.sas` — program-wide Totals analysis and charts
+- `data/synthetic/` — fabricated demo dataset (no PHI/PII)  
+  - `vdh_chr_survey_synthetic.csv`
+- `reports/` — sample outputs  
   - `vdh_chr_survey_totals.pdf`
-  - `vdh_chr_survey_subgroups.pdf`
-- `instrument/` — blank client survey (for context).
-- `docs/` — optional case study or notes for GitHub Pages.
-- `LICENSE` — MIT license for code.
-- `LICENSE-docs.md` — CC BY 4.0 license for documentation.
-- `README.md` — this file.
+- `LICENSE` — MIT license (code)  
+- `LICENSE-docs.md` — CC BY 4.0 license (reports & documentation)  
+- `README.md` — this file
 
 ---
 
-## 🔗 Live Preview (GitHub Pages, optional)
-You can publish a short case study from `docs/`:
+## 🔐 Data & privacy
 
-1. Go to **Settings → Pages**.  
-2. Set **Source** to *Deploy from a branch*.  
-3. Choose branch **main** and folder **/docs**, then **Save**.
+- The packaged CSV is **synthetic** and matches the expected column names/types used by the program.  
+- If you substitute real data, obtain approvals and follow all privacy safeguards. Publishing results from real data may require additional review.
 
 ---
 
-## 🎨 Customize It
-- **Data inputs:** replace `data/synthetic/` with your raw extracts privately; keep public runs on synthetic data.  
-- **Labels & recodes:** edit the data-step arrays in `01_totals.sas` to match your instrument.  
-- **Subgroups:** adjust panel/group variables in `02_subgroups.sas`.  
-- **Exports:** add/remove ODS destinations (PDF/RTF/CSV) in each script.
+## 🛠 Requirements
+
+- **SAS 9.4** with **SAS/GRAPH** and ODS PDF available.
 
 ---
 
-## 🧭 Glossary
-- **CHR** — Comprehensive Harm Reduction program.  
-- **Totals** — program-wide results aggregated across sites.  
-- **Subgroups** — comparisons by demographics or site/region.  
-- **Synthetic data** — artificial records that mimic structure but not real individuals.
+## 🎨 Customize it
+
+- **Labels & recodes:** edit the data-step arrays in the program to match your instrument.  
+- **Legends/notes:** adjust legend placement via `LEG_*` macros and the annotation box via `NOTE_*`/`ANNO_*`.  
+- **Inside counts:** toggle `SHOW_INSIDE_LABELS` (1 = show, 0 = hide).  
+- **Cover page:** set `REPO_URL` to print a clickable reference.
 
 ---
 
 ## ⚠️ Disclaimer
+
 This repository is for educational and demonstration purposes related to public-health analytics. It is **not medical or clinical advice**, and it is **not an official VDH publication**. Results depend on data quality and methods and may not generalize without independent validation. No PHI/PII is included; public artifacts use de-identified or synthetic data. Code and documentation are provided **“as is”** without warranty.
 
 > Additionally, this repository is a **neutral demo** for portfolio/teaching purposes. It is **not affiliated** with VDH beyond the authorized evaluation release.
@@ -98,10 +94,12 @@ This repository is for educational and demonstration purposes related to public-
 ---
 
 ## 📝 License
+
 - **Code:** MIT — see `LICENSE`.  
 - **Reports & documentation:** Creative Commons **CC BY 4.0** — see `LICENSE-docs.md`.
 
 ---
 
 ## 📮 Contact
-© 2025 Isaac B. Michael • [Email](mailto:isaac.b.michael@gmail.com) • [LinkedIn](https://www.linkedin.com/in/isaacbmichael) • [GitHub](https://github.com/isaacbmichael)
+
+© 2025 Isaac B. Michael • Email: isaac.b.michael@gmail.com • LinkedIn: https://www.linkedin.com/in/isaacbmichael • GitHub: https://github.com/isaacbmichael
