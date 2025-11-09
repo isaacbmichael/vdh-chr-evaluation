@@ -69,6 +69,70 @@
 %let OUT_PDF_PATH=;
 
 /* ===============================================================================
+   PATH RESOLUTION AND PREFLIGHT CHECKS
+   - If PROJECT_ROOT is set and both paths are blank, derive defaults.
+   - Validate that IN_CSV_PATH exists.
+   - Ensure the OUT_PDF_PATH folder exists (create it if possible).
+   =============================================================================== */
+
+/* Optional: user can set this; leave blank by default */
+%let PROJECT_ROOT=;
+%let REPO_URL=;
+
+/* Derive defaults from PROJECT_ROOT only when both are blank */
+%macro _derive_from_root;
+  %if %superq(PROJECT_ROOT) ne %then %do;
+    %if %superq(IN_CSV_PATH)= and %superq(OUT_PDF_PATH)= %then %do;
+      %let IN_CSV_PATH=%superq(PROJECT_ROOT)/data/synthetic/vdh_chr_survey_synthetic.csv;
+      %let OUT_PDF_PATH=%superq(PROJECT_ROOT)/reports/vdh_chr_survey_totals.pdf;
+    %end;
+  %end;
+%mend;
+%_derive_from_root;
+
+/* Pretty error and abort helper */
+%macro _die(msg);
+  %put ERROR: &msg;
+  %abort cancel;
+%mend;
+
+/* Require both paths */
+%macro _require_paths;
+  %if %superq(IN_CSV_PATH)= %then %_die(Set IN_CSV_PATH in USER CONFIG.);
+  %if %superq(OUT_PDF_PATH)= %then %_die(Set OUT_PDF_PATH in USER CONFIG.);
+%mend;
+%_require_paths;
+
+/* Make sure CSV exists */
+%macro _require_csv;
+  %if not %sysfunc(fileexist(%superq(IN_CSV_PATH))) %then
+    %_die(Input CSV not found at IN_CSV_PATH: %superq(IN_CSV_PATH));
+%mend;
+%_require_csv;
+
+/* Ensure the output directory exists (best-effort mkdir) */
+%macro _ensure_dir_from_file(fullpath);
+  %local outdir rc did parent leaf mk;
+  /* strip filename: keep everything before the last / or \ */
+  %let outdir=%sysfunc(prxchange(s/[\/\\][^\/\\]+$//,1,%superq(fullpath)));
+  %let rc=%sysfunc(filename(_d,"&outdir"));
+  %let did=%sysfunc(dopen(_d));
+  %if &did=0 %then %do;
+    /* try to create last folder */
+    %let parent=%sysfunc(prxchange(s/[\/\\]([^\/\\]+)$//,1,&outdir));
+    %let leaf=%sysfunc(prxchange(s/.*[\/\\]([^\/\\]+)$/$1/,1,&outdir));
+    %let mk=%sysfunc(dcreate(&leaf,&parent));
+    %let rc=%sysfunc(filename(_d,"&outdir"));
+    %let did=%sysfunc(dopen(_d));
+    %if &did=0 %then %put WARNING: Could not create output folder &outdir.. Create it manually if needed.;
+    %else %let rc=%sysfunc(dclose(&did));
+  %end;
+  %else %let rc=%sysfunc(dclose(&did));
+  %let rc=%sysfunc(filename(_d));
+%mend;
+%_ensure_dir_from_file(&OUT_PDF_PATH);
+
+/* ===============================================================================
    STYLE DEFAULTS - NO USER ACTION NEEDED
    -------------------------------------------------------------------------------
    These settings keep the charts and text consistent with prior reports.
